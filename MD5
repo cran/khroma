@@ -1,0 +1,17 @@
+090d23dabb990a1b3d29f7eefe902bbf *DESCRIPTION
+bb349802f633b8a7847bae4fb9616ebb *NAMESPACE
+677c39cd1b0e43a345ac889fc0202a92 *R/colour.R
+5d00966a620fe2d5427a22567f4e0695 *R/ggplot2.R
+61fa668cc00be3abf49dfadb50edb70e *R/sysdata.rda
+0198596e26f23e4cff342f82b9f292d5 *R/utilities.R
+5f02505d56a70a142e8399e9acee9861 *README.md
+df67e2498e66a0f341171adfe8357ade *inst/CITATION
+0bcc4bdd363f212cc67ce217c2b11d77 *inst/examples/palettes.R
+c2905a4141da93c0d05648bb7d37f3b1 *inst/examples/stratigraphy.R
+31b50d6c08ba8eea9d08c7fae84928f8 *inst/examples/tol.R
+334bce7764f3328e888a63428bcf17ce *man/colour.Rd
+890efa340092d15197cee2d430859542 *man/figures/README-tol-diverging-1.png
+7d7d43117752fe0145439bb66e31920d *man/figures/README-tol-qualitative-1.png
+22d93db43efe51f543071e0426185c73 *man/figures/README-tol-sequential-1.png
+55675ca931713434dc36708e3f101dd0 *man/scale_stratigraphy.Rd
+c4930ad1acb2ed00d91649d5173f9930 *man/scale_tol.Rd
