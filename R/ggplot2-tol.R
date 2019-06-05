@@ -3,7 +3,7 @@
 NULL
 
 # ===================================================================== Discrete
-#' Paul Tol's discrete colour schemes for ggplot2
+#' Paul Tol's Discrete Colour Schemes for ggplot2
 #'
 #' Provides qualitative colour scales from Paul Tol's \emph{Colour Schemes}.
 #' @param ... Arguments passed to \code{\link[ggplot2]{discrete_scale}}.
@@ -12,19 +12,22 @@ NULL
 #' @param aesthetics A \code{\link{character}} string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
 #' @details
-#'  The qualitative colour schemes are used as given: colours are picked up to
-#'  the maximum number of supported values.
+#'  The qualitative colour schemes are used as given (no interpolation):
+#'  colours are picked up to the maximum number of supported values.
+#'
 #'  \tabular{ll}{
 #'   \strong{Palette} \tab \strong{Max.} \cr
 #'   bright \tab 7 \cr
 #'   contrast \tab 3 \cr
 #'   vibrant \tab 7 \cr
 #'   muted \tab 9 \cr
+#'   pale \tab 6 \cr
+#'   dark \tab 6 \cr
 #'   light \tab 9 \cr
-#'   rainbow \tab 23 \cr
 #'  }
+#' @inheritSection colour Qualitative colour schemes
 #' @references
-#'  Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+#'  Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-discrete.R
 #' @author N. Frerebeau
@@ -101,6 +104,40 @@ scale_fill_muted <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale(aesthetics, "muted", reverse, ...)
 }
 
+## ------------------------------------------------------------------------ Pale
+#' @export
+#' @rdname scale_tol_discrete
+scale_colour_pale <- function(..., reverse = FALSE, aesthetics = "colour") {
+  scale(aesthetics, "pale", reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_discrete
+scale_color_pale <- scale_colour_pale
+
+#' @export
+#' @rdname scale_tol_discrete
+scale_fill_pale <- function(..., reverse = FALSE, aesthetics = "fill") {
+  scale(aesthetics, "pale", reverse, ...)
+}
+
+## ------------------------------------------------------------------------ Dark
+#' @export
+#' @rdname scale_tol_discrete
+scale_colour_dark <- function(..., reverse = FALSE, aesthetics = "colour") {
+  scale(aesthetics, "dark", reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_discrete
+scale_color_dark <- scale_colour_dark
+
+#' @export
+#' @rdname scale_tol_discrete
+scale_fill_dark <- function(..., reverse = FALSE, aesthetics = "fill") {
+  scale(aesthetics, "dark", reverse, ...)
+}
+
 ## ----------------------------------------------------------------------- Light
 #' @export
 #' @rdname scale_tol_discrete
@@ -122,7 +159,8 @@ scale_fill_light <- function(..., reverse = FALSE, aesthetics = "fill") {
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_rainbow <- function(..., reverse = FALSE, aesthetics = "colour") {
-  scale(aesthetics, "rainbow", reverse, ...)
+  .Deprecated("scale_colour_discreterainbow")
+  scale(aesthetics, "discrete rainbow", reverse, ...)
 }
 
 #' @export
@@ -132,11 +170,12 @@ scale_color_rainbow <- scale_colour_rainbow
 #' @export
 #' @rdname scale_tol_discrete
 scale_fill_rainbow <- function(..., reverse = FALSE, aesthetics = "fill") {
-  scale(aesthetics, "rainbow", reverse, ...)
+  .Deprecated("scale_fill_discreterainbow")
+  scale(aesthetics, "discrete rainbow", reverse, ...)
 }
 
 # ==================================================================== Diverging
-#' Paul Tol's diverging colour schemes for ggplot2
+#' Paul Tol's Diverging Colour Schemes for ggplot2
 #'
 #' Provides diverging colour scales from Paul Tol's \emph{Colour Schemes}.
 #' @param ... Arguments passed to \code{\link[ggplot2]{continuous_scale}}.
@@ -147,15 +186,18 @@ scale_fill_rainbow <- function(..., reverse = FALSE, aesthetics = "fill") {
 #' @param aesthetics A \code{\link{character}} string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
 #' @details
-#'  Diverging colour schemes are linearly interpolated.
-#'  \tabular{ll}{
-#'   \strong{Palette} \tab \strong{Max.} \cr
-#'   sunset \tab 11 \cr
-#'   BuRd \tab 9 \cr
-#'   PRGn \tab 9 \cr
+#'  The sequential colour schemes are linearly interpolated.
+#'  Note that the default colour for \code{NA} can be overridden by passing
+#'  a value to \code{\link[ggplot2]{continuous_scale}}.
+#'
+#'  \tabular{lll}{
+#'   \strong{Palette} \tab \strong{Max. colours} \tab \strong{NA value} \cr
+#'   sunset \tab 11 \tab #FFFFFF \cr
+#'   BuRd \tab 9 \tab #FFEE99 \cr
+#'   PRGn \tab 9 \tab #FFEE99 \cr
 #'  }
 #' @references
-#'  Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+#'  Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-diverging.R
 #' @author N. Frerebeau
@@ -222,7 +264,7 @@ scale_fill_PRGn <- function(..., reverse = FALSE,
 }
 
 # =================================================================== Sequential
-#' Paul Tol's sequential colour schemes for ggplot2
+#' Paul Tol's Sequential Colour Schemes for ggplot2
 #'
 #' Provides sequential colour scales from Paul Tol's \emph{Colour Schemes}.
 #' @param ... Arguments passed to \code{\link[ggplot2]{continuous_scale}}.
@@ -231,15 +273,22 @@ scale_fill_PRGn <- function(..., reverse = FALSE,
 #' @param aesthetics A \code{\link{character}} string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
 #' @details
-#'  Sequential colour schemes are linearly interpolated.
-#'  \tabular{ll}{
-#'   \strong{Palette} \tab \strong{Max.} \cr
-#'   YlOrBr \tab 9 \cr
-#'   iridescent \tab 23 \cr
-#'   smooth rainbow \tab 34 \cr
+#'  The sequential colour schemes are linearly interpolated, with the exception
+#'  of the \code{discrete rainbow} palette (see below).
+#'  Note that the default colour for \code{NA} can be overridden by passing
+#'  a value to \code{\link[ggplot2]{continuous_scale}}.
+#'
+#'  \tabular{lll}{
+#'   \strong{Palette} \tab \strong{Max. colours} \tab \strong{NA value} \cr
+#'   YlOrBr \tab 9 \tab #888888 \cr
+#'   iridescent \tab 23 \tab #999999 \cr
+#'   discrete rainbow \tab 23 \tab #777777 \cr
+#'   smooth rainbow \tab 34 \tab #666666 \cr
 #'  }
+#'
+#' @inheritSection colour Rainbow colour scheme
 #' @references
-#'  Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+#'  Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-sequential.R
 #' @author N. Frerebeau
@@ -281,6 +330,25 @@ scale_color_iridescent <- scale_colour_iridescent
 #' @rdname scale_tol_sequential
 scale_fill_iridescent <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale(aesthetics, "iridescent", reverse, ...)
+}
+
+## ------------------------------------------------------------ Discrete Rainbow
+#' @export
+#' @rdname scale_tol_sequential
+scale_colour_discreterainbow <- function(..., reverse = FALSE,
+                                         aesthetics = "colour") {
+  scale(aesthetics, "discrete rainbow", reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_sequential
+scale_color_discreterainbow <- scale_colour_discreterainbow
+
+#' @export
+#' @rdname scale_tol_sequential
+scale_fill_discreterainbow <- function(..., reverse = FALSE,
+                                       aesthetics = "fill") {
+  scale(aesthetics, "discrete rainbow", reverse, ...)
 }
 
 ## -------------------------------------------------------------- Smooth Rainbow

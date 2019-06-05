@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# khroma <img width=120px src="man/figures/logo.svg" align="right" />
+# khroma <img width=120px src="man/figures/logo.png" align="right" />
 
 [![Build
 Status](https://travis-ci.org/nfrerebeau/khroma.svg?branch=master)](https://travis-ci.org/nfrerebeau/khroma)
@@ -12,7 +12,7 @@ Release](https://img.shields.io/github/release/nfrerebeau/khroma.svg)](https://g
 Version](http://www.r-pkg.org/badges/version/khroma)](https://cran.r-project.org/package=khroma)
 [![CRAN
 Downloads](http://cranlogs.r-pkg.org/badges/khroma)](https://cran.r-project.org/package=khroma)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1472077.svg)](https://doi.org/10.5281/zenodo.1472077)
 
 ## Overview
@@ -44,9 +44,9 @@ devtools::install_github("nfrerebeau/khroma")
 Paul Tol offers carefully chosen schemes, ready for each type of data,
 with colours that are:
 
-  - Distinct for all people, including colour-blind readers;
-  - Distinct from black and white;
-  - Distinct on screen and paper;
+  - Distinct for all people, including colour-blind readers.
+  - Distinct from black and white.
+  - Distinct on screen and paper.
   - Matching well together.
 
 All the scales presented in his 2018 technical note \[1\] are
@@ -69,7 +69,7 @@ implemented here, for use with `graphics` or `ggplot2`.
 The following scientific colour schemes are available:
 
   - International Chronostratigraphic Chart.
-  - AVHRR global land cover classification.
+  - AVHRR Global Land Cover Classification.
   - FAO Soil Reference Groups.
 
 More will be added in future releases (suggestions are welcome).

@@ -11,7 +11,7 @@
 \alias{scale_colour_PRGn}
 \alias{scale_color_PRGn}
 \alias{scale_fill_PRGn}
-\title{Paul Tol's diverging colour schemes for ggplot2}
+\title{Paul Tol's Diverging Colour Schemes for ggplot2}
 \usage{
 scale_colour_sunset(..., reverse = FALSE, midpoint = 0,
   aesthetics = "colour")
@@ -56,12 +56,15 @@ strings listing the name(s) of the aesthetic(s) that this scale works with.}
 Provides diverging colour scales from Paul Tol's \emph{Colour Schemes}.
 }
 \details{
-Diverging colour schemes are linearly interpolated.
- \tabular{ll}{
-  \strong{Palette} \tab \strong{Max.} \cr
-  sunset \tab 11 \cr
-  BuRd \tab 9 \cr
-  PRGn \tab 9 \cr
+The sequential colour schemes are linearly interpolated.
+ Note that the default colour for \code{NA} can be overridden by passing
+ a value to \code{\link[ggplot2]{continuous_scale}}.
+
+ \tabular{lll}{
+  \strong{Palette} \tab \strong{Max. colours} \tab \strong{NA value} \cr
+  sunset \tab 11 \tab #FFFFFF \cr
+  BuRd \tab 9 \tab #FFEE99 \cr
+  PRGn \tab 9 \tab #FFEE99 \cr
  }
 }
 \examples{
@@ -81,7 +84,7 @@ ggplot(economics, aes(psavert, pce, colour = unemploy)) +
   khroma::scale_color_PRGn(midpoint = 6000)
 }
 \references{
-Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 }
 \seealso{

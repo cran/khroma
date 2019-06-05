@@ -14,13 +14,19 @@
 \alias{scale_colour_muted}
 \alias{scale_color_muted}
 \alias{scale_fill_muted}
+\alias{scale_colour_pale}
+\alias{scale_color_pale}
+\alias{scale_fill_pale}
+\alias{scale_colour_dark}
+\alias{scale_color_dark}
+\alias{scale_fill_dark}
 \alias{scale_colour_light}
 \alias{scale_color_light}
 \alias{scale_fill_light}
 \alias{scale_colour_rainbow}
 \alias{scale_color_rainbow}
 \alias{scale_fill_rainbow}
-\title{Paul Tol's discrete colour schemes for ggplot2}
+\title{Paul Tol's Discrete Colour Schemes for ggplot2}
 \usage{
 scale_colour_bright(..., reverse = FALSE, aesthetics = "colour")
 
@@ -45,6 +51,18 @@ scale_colour_muted(..., reverse = FALSE, aesthetics = "colour")
 scale_color_muted(..., reverse = FALSE, aesthetics = "colour")
 
 scale_fill_muted(..., reverse = FALSE, aesthetics = "fill")
+
+scale_colour_pale(..., reverse = FALSE, aesthetics = "colour")
+
+scale_color_pale(..., reverse = FALSE, aesthetics = "colour")
+
+scale_fill_pale(..., reverse = FALSE, aesthetics = "fill")
+
+scale_colour_dark(..., reverse = FALSE, aesthetics = "colour")
+
+scale_color_dark(..., reverse = FALSE, aesthetics = "colour")
+
+scale_fill_dark(..., reverse = FALSE, aesthetics = "fill")
 
 scale_colour_light(..., reverse = FALSE, aesthetics = "colour")
 
@@ -71,18 +89,36 @@ strings listing the name(s) of the aesthetic(s) that this scale works with.}
 Provides qualitative colour scales from Paul Tol's \emph{Colour Schemes}.
 }
 \details{
-The qualitative colour schemes are used as given: colours are picked up to
- the maximum number of supported values.
+The qualitative colour schemes are used as given (no interpolation):
+ colours are picked up to the maximum number of supported values.
+
  \tabular{ll}{
   \strong{Palette} \tab \strong{Max.} \cr
   bright \tab 7 \cr
   contrast \tab 3 \cr
   vibrant \tab 7 \cr
   muted \tab 9 \cr
+  pale \tab 6 \cr
+  dark \tab 6 \cr
   light \tab 9 \cr
-  rainbow \tab 23 \cr
  }
 }
+\section{Qualitative colour schemes}{
+
+ According to Paul Tol's technical note, the \code{bright}, \code{contrast},
+ \code{vibrant} and \code{muted} colour schemes are colour-blind safe.
+
+ The \code{light} colour scheme is reasonably distinct for both normal or
+ colour-blind vision and is intended to fill labelled cells.
+
+ The \code{pale} and \code{dark} schemes are not very distinct in either
+ normal or colour-blind vision and should be used as a text background or
+ to highlight a cell in a table.
+
+ Refer to the original document for details about the recommended uses (see
+ references).
+}
+
 \examples{
 library(ggplot2)
 
@@ -101,14 +137,25 @@ ggplot(diamonds, aes(clarity, fill = cut)) +
 
 ggplot(diamonds, aes(clarity, fill = cut)) +
   geom_bar() +
+  khroma::scale_fill_pale()
+
+ggplot(diamonds, aes(clarity, fill = cut)) +
+  geom_bar() +
+  khroma::scale_fill_dark()
+
+ggplot(diamonds, aes(clarity, fill = cut)) +
+  geom_bar() +
   khroma::scale_fill_light()
 
+## Deprecated: use scale_*_discreterainbow() instead
+\dontrun{
 ggplot(mpg, aes(displ, hwy, colour = class)) +
   geom_point() +
   khroma::scale_colour_rainbow()
 }
+}
 \references{
-Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 }
 \seealso{
