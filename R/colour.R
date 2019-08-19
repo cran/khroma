@@ -3,11 +3,12 @@
 #' Provides qualitative, diverging and sequential colour schemes.
 #' @param palette A \code{\link{character}} string giving the name of
 #'  the palette to be used (see below).
-#' @param reverse A \code{\link{logical}} scalar specifying if the resulting
-#'  vector of colours should be reversed.
-#' @param names A \code{\link{logical}} scalar specifying if the names of the
-#'  colours should be kept in the resulting vector.
-#' @param ... Further arguments passed to \code{\link[grDevices]{colorRampPalette}}.
+#' @param reverse A \code{\link{logical}} scalar: should the resulting
+#'  vector of colours should be reversed?
+#' @param names A \code{\link{logical}} scalar: should the names of the
+#'  colours should be kept in the resulting vector?
+#' @param ... Further arguments passed to
+#'  \code{\link[grDevices]{colorRampPalette}}.
 #' @section Paul Tol's Colour Schemes:
 #'  The following palettes are available. The maximum number of supported
 #'  colours is in brackets, this value is only relevant for the qualitative
@@ -59,15 +60,30 @@
 #'   \item{land}{AVHRR Global Land Cover Classification (14 colours).}
 #'   \item{soil}{FAO Reference Soil Groups (24 colours).}
 #'  }
-#' @return A palette function that when called with a single integer argument
-#'  (the number of levels) returns a vector of colours.
+#' @return A palette function with the following attributes, that when called
+#'  with a single integer argument (the number of levels) returns a (named)
+#'  vector of colours.
+#'  \describe{
+#'   \item{name}{A \code{\link{character}} string giving the name of the colour
+#'   scheme.}
+#'   \item{type}{A \code{\link{character}} string giving the corresponding
+#'   data type. One of "\code{qualitative}", "\code{diverging}" or
+#'   "\code{sequential}".}
+#'   \item{interpolate}{A \code{\link{logical}} scalar: can the color palette be
+#'   interpolated?}
+#'   \item{missing}{A \code{\link{character}} string giving the the hexadecimal
+#'   representation of the colour that should be used for \code{NA} values.}
+#'   \item{max}{An \code{\link{integer}} giving the maximum number of colour
+#'   values. Only relevant for non-interpolated colour schemes.}
+#'  }
 #' @references
 #'  Jones, A., Montanarella, L. & Jones, R. (Ed.) (2005). \emph{Soil atlas of
 #'  Europe}. Luxembourg: European Commission, Office for Official Publications
 #'  of the European Communities. 128 pp. ISBN: 92-894-8120-X.
 #'
-#'  Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
-#'  SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+#'  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+#'  SRON/EPS/TN/09-002, issue 3.1.
+#'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #'
 #'  \href{https://www.ccgm.org}{Commission for the Geological Map of the World}
 #' @example inst/examples/ex-palettes.R
@@ -76,9 +92,9 @@
 #' @export
 colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
   # Validation
-  palette <- match.arg(palette, names(palettes), several.ok = FALSE)
+  palette <- match.arg(palette, names(.schemes), several.ok = FALSE)
   # Get colours
-  col_scheme <- palettes[[palette]]
+  col_scheme <- .schemes[[palette]]
   colours <- col_scheme[["colours"]]
   type <- col_scheme[["type"]]
   interpolate <- col_scheme[["interpolate"]]
@@ -100,11 +116,16 @@ colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
         stop("You ask for too many colours: ", palette,
              " colour scheme supports up to ", k, " values.", call. = FALSE)
       # Arrange colour schemes
-      col <- if (palette == "discrete rainbow") colours[scheme[[n]]] else colours
+      col <- if (palette == "discrete rainbow") {
+        colours[scheme[[n]]]
+      } else {
+        colours[seq(from = 1, to = k, length.out = n)]
+      }
       col <- if (names) col else unname(col)
       return(col)
     }
   }
+  attr(fun, "name") <- palette
   attr(fun, "type") <- type
   attr(fun, "interpolate") <- as.logical(interpolate)
   attr(fun, "missing") <- missing

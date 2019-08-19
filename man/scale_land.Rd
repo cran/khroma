@@ -4,7 +4,7 @@
 \alias{scale_colour_land}
 \alias{scale_color_land}
 \alias{scale_fill_land}
-\title{AVHRR Global Land Cover Classification Colour Scheme for ggplot2}
+\title{AVHRR Global Land Cover Classification Colour Scheme for \pkg{ggplot2}}
 \usage{
 scale_colour_land(..., aesthetics = "colour")
 
@@ -17,6 +17,9 @@ scale_fill_land(..., aesthetics = "fill")
 
 \item{aesthetics}{A \code{\link{character}} string or vector of character
 strings listing the name(s) of the aesthetic(s) that this scale works with.}
+}
+\value{
+A \code{\link[ggplot2:discrete_scale]{discrete}} scale.
 }
 \description{
 Provides the AVHRR Global Land Cover classification as modified by
@@ -37,15 +40,16 @@ land <- data.frame(
   )
 )
 
-ggplot(land, aes(fill = name)) +
-  geom_rect(aes(xmin = rep(0, 14), xmax = rep(1, 14),
-                ymin = 1:14, ymax = 1:14+1)) +
-  scale_y_reverse() +
-  khroma::scale_fill_land(name = "land")
+ggplot2::ggplot(land, ggplot2::aes(fill = name)) +
+  ggplot2::geom_rect(aes(xmin = rep(0, 14), xmax = rep(1, 14),
+                         ymin = 1:14, ymax = 1:14+1)) +
+  ggplot2::scale_y_reverse() +
+  scale_fill_land(name = "land")
 }
 \references{
-Tol, Paul (2018). \emph{Colour Schemes.} SRON. Technical Note No.
- SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+Tol, P. (2018). \emph{Colour Schemes.} SRON. Technical Note No.
+ SRON/EPS/TN/09-002, issue 3.1.
+ URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 }
 \seealso{
 Other Themed colour schemes: \code{\link{scale_colour_soil}},

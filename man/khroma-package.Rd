@@ -5,21 +5,24 @@
 \alias{khroma-package}
 \alias{_PACKAGE}
 \alias{khroma}
-\title{khroma: Colour Schemes for Archaeological Data Visualization}
+\title{khroma: Colour Schemes for Scientific Data Visualization}
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-Colour schemes for archaeological data
-    visualization. This package provides Paul Tol's colour schemes and
-    several thematic palettes (geologic timescale, land cover, FAO soils,
-    etc.)  with scales for 'ggplot2'.
+An implementation of Paul Tol's colour schemes for
+    use with 'graphics' or 'ggplot2'. These schemes are ready for each
+    type of data (qualitative, diverging or sequential), with colours that
+    are distinct for all people, including colour-blind readers. This
+    package provides tools to simulate colour-blindness and to test how
+    well the colours of any palette are identifiable. Several scientific
+    thematic schemes (geologic timescale, land cover, FAO soils, etc.) are
+    also implemented.
 }
 \details{
 \tabular{ll}{
  \strong{Package:} \tab khroma \cr
  \strong{Type:} \tab Package \cr
- \strong{Version:} \tab 1.1.3 \cr
- \strong{Date:} \tab 2019-06-05 \cr
+ \strong{Version:} \tab 1.2.0 \cr
  \strong{License:} \tab GPL-3 \cr
  \strong{DOI:} \tab \href{https://doi.org/10.5281/zenodo.1472077}{10.5281/zenodo.1472077}
 }
@@ -37,8 +40,8 @@ Useful links:
 \author{
 \strong{Full list of authors and contributors} (alphabetic order)
  \tabular{ll}{
-  Nicolas Frerebeau \tab \emph{IRAMAT-CRP2A, Université Bordeaux Montaigne, France} \cr
-  Brice Lebrun \tab \emph{CEREGE, Aix-Marseille Université, France}
+  Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
+  Brice Lebrun \tab \emph{Aix-Marseille Université, France}
  }
 
 \strong{Package maintainer}

@@ -11,7 +11,7 @@
 \alias{scale_colour_PRGn}
 \alias{scale_color_PRGn}
 \alias{scale_fill_PRGn}
-\title{Paul Tol's Diverging Colour Schemes for ggplot2}
+\title{Paul Tol's Diverging Colour Schemes for \pkg{ggplot2}}
 \usage{
 scale_colour_sunset(..., reverse = FALSE, midpoint = 0,
   aesthetics = "colour")
@@ -52,11 +52,16 @@ vector of colours be reversed?}
 \item{aesthetics}{A \code{\link{character}} string or vector of character
 strings listing the name(s) of the aesthetic(s) that this scale works with.}
 }
+\value{
+A \code{\link[ggplot2:continuous_scale]{continuous}} scale.
+}
 \description{
 Provides diverging colour scales from Paul Tol's \emph{Colour Schemes}.
 }
 \details{
-The sequential colour schemes are linearly interpolated.
+If more colours than defined are needed from a given scheme, the colour
+ coordinates are linearly interpolated to provide a continuous version of the
+ scheme.
  Note that the default colour for \code{NA} can be overridden by passing
  a value to \code{\link[ggplot2]{continuous_scale}}.
 
@@ -70,22 +75,22 @@ The sequential colour schemes are linearly interpolated.
 \examples{
 library(ggplot2)
 
-# Diverging data
-ggplot(economics, aes(psavert, pce, colour = unemploy)) +
-  geom_point() +
-  khroma::scale_color_sunset(midpoint = 12000)
+ggplot2::ggplot(economics, ggplot2::aes(psavert, pce, colour = unemploy)) +
+  ggplot2::geom_point() +
+  scale_color_sunset(midpoint = 12000)
 
-ggplot(economics, aes(psavert, pce, colour = unemploy)) +
-  geom_point() +
-  khroma::scale_color_BuRd(midpoint = 9000)
+ggplot2::ggplot(economics, ggplot2::aes(psavert, pce, colour = unemploy)) +
+  ggplot2::geom_point() +
+  scale_color_BuRd(midpoint = 9000)
 
-ggplot(economics, aes(psavert, pce, colour = unemploy)) +
-  geom_point() +
-  khroma::scale_color_PRGn(midpoint = 6000)
+ggplot2::ggplot(economics, ggplot2::aes(psavert, pce, colour = unemploy)) +
+  ggplot2::geom_point() +
+  scale_color_PRGn(midpoint = 6000)
 }
 \references{
-Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
- SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+ SRON/EPS/TN/09-002, issue 3.1.
+ URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 }
 \seealso{
 Other Paul Tol's colour schemes: \code{\link{scale_tol_discrete}},

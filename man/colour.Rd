@@ -13,17 +13,32 @@ color(palette, reverse = FALSE, names = TRUE, ...)
 \item{palette}{A \code{\link{character}} string giving the name of
 the palette to be used (see below).}
 
-\item{reverse}{A \code{\link{logical}} scalar specifying if the resulting
-vector of colours should be reversed.}
+\item{reverse}{A \code{\link{logical}} scalar: should the resulting
+vector of colours should be reversed?}
 
-\item{names}{A \code{\link{logical}} scalar specifying if the names of the
-colours should be kept in the resulting vector.}
+\item{names}{A \code{\link{logical}} scalar: should the names of the
+colours should be kept in the resulting vector?}
 
-\item{...}{Further arguments passed to \code{\link[grDevices]{colorRampPalette}}.}
+\item{...}{Further arguments passed to
+\code{\link[grDevices]{colorRampPalette}}.}
 }
 \value{
-A palette function that when called with a single integer argument
- (the number of levels) returns a vector of colours.
+A palette function with the following attributes, that when called
+ with a single integer argument (the number of levels) returns a (named)
+ vector of colours.
+ \describe{
+  \item{name}{A \code{\link{character}} string giving the name of the colour
+  scheme.}
+  \item{type}{A \code{\link{character}} string giving the corresponding
+  data type. One of "\code{qualitative}", "\code{diverging}" or
+  "\code{sequential}".}
+  \item{interpolate}{A \code{\link{logical}} scalar: can the color palette be
+  interpolated?}
+  \item{missing}{A \code{\link{character}} string giving the the hexadecimal
+  representation of the colour that should be used for \code{NA} values.}
+  \item{max}{An \code{\link{integer}} giving the maximum number of colour
+  values. Only relevant for non-interpolated colour schemes.}
+ }
 }
 \description{
 Provides qualitative, diverging and sequential colour schemes.
@@ -92,43 +107,42 @@ Provides qualitative, diverging and sequential colour schemes.
 }
 
 \examples{
-library(scales)
-
 ## Paul Tol's colour schemes
 ### Qualitative data
-show_col(colour("bright")(7))
-show_col(colour("contrast")(3))
-show_col(colour("vibrant")(7))
-show_col(colour("pale")(6))
-show_col(colour("dark")(6))
-show_col(colour("muted")(9))
-show_col(colour("light")(9))
+scales::show_col(colour("bright")(7))
+scales::show_col(colour("contrast")(3))
+scales::show_col(colour("vibrant")(7))
+scales::show_col(colour("pale")(6))
+scales::show_col(colour("dark")(6))
+scales::show_col(colour("muted")(9))
+scales::show_col(colour("light")(9))
 ### Diverging data
-show_col(colour("sunset")(11))
-show_col(colour("BuRd")(9))
-show_col(colour("PRGn")(9))
+scales::show_col(colour("sunset")(11))
+scales::show_col(colour("BuRd")(9))
+scales::show_col(colour("PRGn")(9))
 ### Sequential data
-show_col(colour("YlOrBr")(9))
-show_col(colour("iridescent")(23))
-show_col(colour("discrete rainbow")(14))
-show_col(colour("discrete rainbow")(23))
-show_col(colour("smooth rainbow")(34))
+scales::show_col(colour("YlOrBr")(9))
+scales::show_col(colour("iridescent")(23))
+scales::show_col(colour("discrete rainbow")(14))
+scales::show_col(colour("discrete rainbow")(23))
+scales::show_col(colour("smooth rainbow")(34))
 
 ## Scientific colour schemes
 ### Geologic timescale
-show_col(colour("stratigraphy")(175))
+scales::show_col(colour("stratigraphy")(175))
 ### AVHRR global land cover classification
-show_col(colour("land")(14))
+scales::show_col(colour("land")(14))
 ### FAO soil reference groups
-show_col(colour("soil")(24))
+scales::show_col(colour("soil")(24))
 }
 \references{
 Jones, A., Montanarella, L. & Jones, R. (Ed.) (2005). \emph{Soil atlas of
  Europe}. Luxembourg: European Commission, Office for Official Publications
  of the European Communities. 128 pp. ISBN: 92-894-8120-X.
 
- Tol, Paul (2018). \emph{Colour Schemes}. SRON. Technical Note No.
- SRON/EPS/TN/09-002. URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+ Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+ SRON/EPS/TN/09-002, issue 3.1.
+ URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 
  \href{https://www.ccgm.org}{Commission for the Geological Map of the World}
 }

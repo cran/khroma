@@ -4,7 +4,7 @@
 \alias{scale_colour_stratigraphy}
 \alias{scale_color_stratigraphy}
 \alias{scale_fill_stratigraphy}
-\title{Geologic Timescale Colour Scheme for ggplot2}
+\title{Geologic Timescale Colour Scheme for \pkg{ggplot2}}
 \usage{
 scale_colour_stratigraphy(..., aesthetics = "colour")
 
@@ -17,6 +17,9 @@ scale_fill_stratigraphy(..., aesthetics = "fill")
 
 \item{aesthetics}{A \code{\link{character}} string or vector of character
 strings listing the name(s) of the aesthetic(s) that this scale works with.}
+}
+\value{
+A \code{\link[ggplot2:discrete_scale]{discrete}} scale.
 }
 \description{
 Provides the geologic timescale colour scheme.
@@ -40,12 +43,12 @@ strati <- data.frame(
           66, 201, 145, 66, 2.6, 23, 2.6, 0)
 )
 
-ggplot(strati, aes(fill = name)) +
-  geom_rect(aes(xmin = rep(0, 15), xmax = rep(1, 15),
-                ymin = start, ymax = end)) +
-  scale_y_reverse() +
-  facet_grid(.~type) +
-  khroma::scale_fill_stratigraphy(name = "Stratigraphy")
+ggplot2::ggplot(strati, ggplot2::aes(fill = name)) +
+  ggplot2::geom_rect(aes(xmin = rep(0, 15), xmax = rep(1, 15),
+                         ymin = start, ymax = end)) +
+  ggplot2::scale_y_reverse() +
+  ggplot2::facet_grid(. ~ type) +
+  scale_fill_stratigraphy(name = "Stratigraphy")
 }
 \references{
 \href{https://www.ccgm.org}{Commission for the Geological Map of the World}.

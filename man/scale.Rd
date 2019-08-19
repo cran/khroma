@@ -2,7 +2,7 @@
 % Please edit documentation in R/ggplot2.R
 \name{scale}
 \alias{scale}
-\title{Colour scale constructor}
+\title{Colour Scale Constructor}
 \usage{
 scale(aesthetics, scale_name, reverse = FALSE, midpoint = 0, ...)
 }
@@ -22,9 +22,13 @@ data value) of the diverging scale (defaults to \eqn{0}).}
 or \code{\link[ggplot2]{continuous_scale}}, used respectively for
 qualitative data and diverging/sequential data.}
 }
+\value{
+A \code{\link[ggplot2:discrete_scale]{discrete}}
+ or \code{\link[ggplot2:continuous_scale]{continuous}} scale.
+}
 \description{
-Builds discrete or continuous scale for 'ggplot2' according to the colour
- scheme used.
+Builds a discrete or continuous scale for \pkg{ggplot2} according to the
+colour scheme used.
 }
 \author{
 N. Frerebeau
