@@ -88,6 +88,7 @@
 #'  \href{https://www.ccgm.org}{Commission for the Geological Map of the World}
 #' @example inst/examples/ex-palettes.R
 #' @author N. Frerebeau
+#' @family colour palettes
 #' @keywords color
 #' @export
 colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
@@ -107,7 +108,11 @@ colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
 
   if (interpolate) {
     # For colour schemes that can be linearly interpolated
-    fun <- grDevices::colorRampPalette(colours, ...)
+    fun <- function(n) {
+      col <- grDevices::colorRampPalette(colours)(n)
+      class(col) <- "colour_scheme"
+      return(col)
+    }
   } else {
     # No interpolation
     fun <- function(n) {
@@ -118,10 +123,13 @@ colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
       # Arrange colour schemes
       col <- if (palette == "discrete rainbow") {
         colours[scheme[[n]]]
+      } else if (type == "qualitative") {
+        colours[seq_len(n)]
       } else {
         colours[seq(from = 1, to = k, length.out = n)]
       }
       col <- if (names) col else unname(col)
+      class(col) <- "colour_scheme"
       return(col)
     }
   }
@@ -136,3 +144,15 @@ colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
 #' @export
 #' @rdname colour
 color <- colour
+
+#' @export
+print.colour_scheme <- function(x, ...) {
+  if (requireNamespace("crayon", quietly = TRUE) &
+      getOption("crayon.enabled", default = FALSE)) {
+    styled <- vapply(x, FUN = function(x) crayon::make_style(x, bg = TRUE)(x),
+                     FUN.VALUE = character(1))
+    cat(styled)
+  } else {
+    print(unclass(x))
+  }
+}
