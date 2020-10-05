@@ -7,7 +7,7 @@
 \alias{khroma}
 \title{khroma: Colour Schemes for Scientific Data Visualization}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 An implementation of Paul Tol's colour schemes for
     use with 'graphics' or 'ggplot2'. These schemes are ready for each
@@ -22,7 +22,7 @@ An implementation of Paul Tol's colour schemes for
 \tabular{ll}{
  \strong{Package:} \tab khroma \cr
  \strong{Type:} \tab Package \cr
- \strong{Version:} \tab 1.3.0 \cr
+ \strong{Version:} \tab 1.4.0 \cr
  \strong{License:} \tab GPL-3 \cr
  \strong{DOI:} \tab \href{https://doi.org/10.5281/zenodo.1472077}{10.5281/zenodo.1472077}
 }
@@ -30,18 +30,19 @@ An implementation of Paul Tol's colour schemes for
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://khroma.archaeo.science}
-  \item \url{http://github.com/nfrerebeau/khroma}
+  \item \url{https://khroma.archaeo.science}
+  \item \url{https://github.com/nfrerebeau/khroma}
   \item \url{https://cran.r-project.org/package=khroma}
-  \item Report bugs at \url{http://github.com/nfrerebeau/khroma/issues}
+  \item Report bugs at \url{https://github.com/nfrerebeau/khroma/issues}
 }
 
 }
 \author{
 \strong{Full list of authors and contributors} (alphabetic order)
  \tabular{ll}{
+  Vincent Arel-Bundock \tab \emph{Université de Montréal, Canada} \cr
   Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
-  Brice Lebrun \tab \emph{Aix-Marseille Université, France}
+  Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
  }
 
 \strong{Package maintainer}

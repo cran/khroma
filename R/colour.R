@@ -7,8 +7,15 @@
 #'  vector of colours should be reversed?
 #' @param names A \code{\link{logical}} scalar: should the names of the
 #'  colours should be kept in the resulting vector?
+#' @param lang A \code{\link{character}} string specifying the language for the
+#'  colour names. It must be one of "\code{en}" (english, the default) or
+#'  "\code{fr}" (french).
+#' @param force A \code{\link{logical}} scalar. If \code{TRUE}, forces the
+#'  colour scheme to be interpolated. It should not be used routinely with
+#'  qualitative colour schemes, as they are designed to be used as is to remain
+#'  colourblind-safe.
 #' @param ... Further arguments passed to
-#'  \code{\link[grDevices]{colorRampPalette}}.
+#'  \code{\link[grDevices:colorRamp]{colorRampPalette}}.
 #' @section Paul Tol's Colour Schemes:
 #'  The following palettes are available. The maximum number of supported
 #'  colours is in brackets, this value is only relevant for the qualitative
@@ -53,6 +60,11 @@
 #'   \item{smooth rainbow}{This scheme does not have to be used over the full
 #'   range.}
 #'  }
+#' @section Okabe and Ito Colour Scheme:
+#'  The following (qualitative) colour scheme is available:
+#'  \describe{
+#'   \item{okabe ito}{Up to 8 colours.}
+#'  }
 #' @section Scientific Colour Schemes:
 #'  The following (qualitative) colour schemes are available:
 #'  \describe{
@@ -64,8 +76,8 @@
 #'  with a single integer argument (the number of levels) returns a (named)
 #'  vector of colours.
 #'  \describe{
-#'   \item{name}{A \code{\link{character}} string giving the name of the colour
-#'   scheme.}
+#'   \item{palette}{A \code{\link{character}} string giving the name of the
+#'   colour scheme.}
 #'   \item{type}{A \code{\link{character}} string giving the corresponding
 #'   data type. One of "\code{qualitative}", "\code{diverging}" or
 #'   "\code{sequential}".}
@@ -76,10 +88,19 @@
 #'   \item{max}{An \code{\link{integer}} giving the maximum number of colour
 #'   values. Only relevant for non-interpolated colour schemes.}
 #'  }
+#'
+#'  For colour schemes that can be interpolated (diverging and sequential data),
+#'  the colour range can be limited with an additional argument. `range` allows
+#'  to remove a fraction of the colour domain (before being interpolated; see
+#'  examples).
 #' @references
 #'  Jones, A., Montanarella, L. & Jones, R. (Ed.) (2005). \emph{Soil atlas of
 #'  Europe}. Luxembourg: European Commission, Office for Official Publications
 #'  of the European Communities. 128 pp. ISBN: 92-894-8120-X.
+#'
+#'  Okabe, M. & Ito, K. (2008). \emph{Color Universal Design (CUD): How to Make
+#'  Figures and Presentations That Are Friendly to Colorblind People}.
+#'  URL: \url{https://jfly.uni-koeln.de/color/}.
 #'
 #'  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002, issue 3.1.
@@ -91,53 +112,89 @@
 #' @family colour palettes
 #' @keywords color
 #' @export
-colour <- function(palette, reverse = FALSE, names = TRUE, ...) {
+colour <- function(palette, reverse = FALSE, names = TRUE, lang = "en",
+                   force = FALSE, ...) {
   # Validation
   palette <- match.arg(palette, names(.schemes), several.ok = FALSE)
+  lang <- match.arg(lang, c("en", "fr"), several.ok = FALSE)
   # Get colours
-  col_scheme <- .schemes[[palette]]
-  colours <- col_scheme[["colours"]]
-  type <- col_scheme[["type"]]
-  interpolate <- col_scheme[["interpolate"]]
-  missing <- col_scheme[["missing"]]
-  scheme <- col_scheme[["scheme"]]
+  col_palette <- .schemes[[palette]]
+  col_colours <- col_palette[["colours"]]
+  col_names <- col_palette[["names"]][[lang]]
+  col_type <- col_palette[["type"]]
+  col_interpolate <- col_palette[["interpolate"]]
+  col_missing <- col_palette[["missing"]]
+  col_scheme <- col_palette[["scheme"]]
+  k <- col_palette[["max"]]
 
-  k <- if (palette == "discrete rainbow") 23 else length(colours)
+  # Reverse colour order
+  if (reverse) col_colours <- rev(col_colours)
 
-  if (reverse) colours <- rev(colours) # Reverse colour order
-
-  if (interpolate) {
+  if (col_interpolate || force) {
     # For colour schemes that can be linearly interpolated
-    fun <- function(n) {
-      col <- grDevices::colorRampPalette(colours)(n)
-      class(col) <- "colour_scheme"
+    fun <- function(n, range = c(0, 1)) {
+      if (missing(n)) n <- k
+      # Validate
+      if (any(range > 1) | any(range < 0))
+        stop(sQuote("range"), " values must be in [0,1].", call. = FALSE)
+      # Remove starting colours
+      col_colours <- utils::tail(col_colours, k * (1 - range[[1]]))
+      # Remove ending colours
+      col_colours <- utils::head(col_colours, k * range[[2]])
+      # Interpolate
+      col <- grDevices::colorRampPalette(col_colours)(n)
+      # Set attributes
+      col <- structure(
+        col,
+        missing = col_missing,
+        class = c("colour_scheme", "colour_continuous")
+      )
       return(col)
     }
   } else {
     # No interpolation
-    fun <- function(n) {
-      # Check
+    # FIXME: add 'range = c(0, 1)' to prevent "multiple local function
+    # definitions" note in R CMD check
+    fun <- function(n, range = c(0, 1)) {
+      if (missing(n)) n <- k
+      # Validate
       if (n > k)
-        stop("You ask for too many colours: ", palette,
-             " colour scheme supports up to ", k, " values.", call. = FALSE)
+        stop(
+          sprintf("%s colour scheme supports up to %d values.",
+                  sQuote(palette), k),
+          call. = FALSE
+        )
       # Arrange colour schemes
-      col <- if (palette == "discrete rainbow") {
-        colours[scheme[[n]]]
-      } else if (type == "qualitative") {
-        colours[seq_len(n)]
+      if (!is.null(col_scheme)) {
+        m <- col_scheme[[n]]
+        col <- col_colours[m]
+      } else if (col_type == "qualitative") {
+        m <- seq_len(n)
+        col <- col_colours[m]
       } else {
-        colours[seq(from = 1, to = k, length.out = n)]
+        m <- seq(from = 1, to = k, length.out = n)
+        col <- col_colours[m]
       }
-      col <- if (names) col else unname(col)
-      class(col) <- "colour_scheme"
+      # Keep names?
+      if (names) names(col) <- col_names[m] else col <- unname(col)
+      # Set attributes
+      col <- structure(
+        col,
+        missing = col_missing,
+        class = c("colour_scheme", "colour_discrete")
+      )
       return(col)
     }
   }
-  attr(fun, "name") <- palette
-  attr(fun, "type") <- type
-  attr(fun, "interpolate") <- as.logical(interpolate)
-  attr(fun, "missing") <- missing
-  attr(fun, "max") <- as.integer(k)
+  # Set attributes
+  fun <- structure(
+    fun,
+    palette = palette,
+    type = col_type,
+    missing = col_missing,
+    interpolate = col_interpolate || force,
+    max = as.integer(k)
+  )
   return(fun)
 }
 
@@ -147,10 +204,13 @@ color <- colour
 
 #' @export
 print.colour_scheme <- function(x, ...) {
-  if (requireNamespace("crayon", quietly = TRUE) &
+  if (requireNamespace("crayon", quietly = TRUE) &&
       getOption("crayon.enabled", default = FALSE)) {
-    styled <- vapply(x, FUN = function(x) crayon::make_style(x, bg = TRUE)(x),
-                     FUN.VALUE = character(1))
+    styled <- vapply(
+      X = x,
+      FUN = function(x) crayon::make_style(x, bg = TRUE)(x),
+      FUN.VALUE = character(1)
+    )
     cat(styled)
   } else {
     print(unclass(x))

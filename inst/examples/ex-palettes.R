@@ -1,3 +1,7 @@
+## Okabe and Ito colour scheme
+colour("okabe ito")(8)
+plot_scheme(colour("okabe ito")(8))
+
 ## Paul Tol's colour schemes
 ### Qualitative data
 plot_scheme(colour("bright")(7))
@@ -25,3 +29,7 @@ plot_scheme(colour("stratigraphy")(175))
 plot_scheme(colour("land")(14))
 ### FAO soil reference groups
 plot_scheme(colour("soil")(24))
+
+## Adjust colour levels
+PRGn <- colour("PRGn")
+plot_scheme(PRGn(9, range = c(0.5, 1)))

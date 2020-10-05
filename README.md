@@ -1,15 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<STYLE type='text/css' scoped>
-PRE.fansi SPAN {padding-top: .25em; padding-bottom: .25em};
-</STYLE>
-
 # khroma <img width=120px src="man/figures/logo.png" align="right" />
 
-[![Appveyor build
-status](https://ci.appveyor.com/api/projects/status/d4hib2u0jqsup0ln/branch/master?svg=true)](https://ci.appveyor.com/project/nfrerebeau/khroma/branch/master)
-[![Travis build
+<!-- badges: start -->
+
+[![Travis CI Build
 Status](https://travis-ci.org/nfrerebeau/khroma.svg?branch=master)](https://travis-ci.org/nfrerebeau/khroma)
 [![codecov](https://codecov.io/gh/nfrerebeau/khroma/branch/master/graph/badge.svg)](https://codecov.io/gh/nfrerebeau/khroma)
 
@@ -23,9 +19,11 @@ Downloads](http://cranlogs.r-pkg.org/badges/khroma)](https://cran.r-project.org/
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1472077.svg)](https://doi.org/10.5281/zenodo.1472077)
+<!-- badges: end -->
 
 ## Overview
 
@@ -33,25 +31,25 @@ Color blindness affects a large number of individuals. When
 communicating scientific results colour palettes must therefore be
 carefully chosen to be accessible to all readers.
 
-This R package provides an implementation of Paul Tol’s colour
-schemes\[1\]. These schemes are ready for each type of data
+This R package provides an implementation of Paul Tol\[1\] and Okabe and
+Ito\[2\] colour schemes. These schemes are ready for each type of data
 (qualitative, diverging or sequential), with colours that are distinct
 for all people, including colour-blind readers. This package also
 provides tools to simulate colour-blindness and to test how well the
 colours of any palette are identifiable. To simulate colour-blindness in
 production-ready R figures you may also be interested in the
-[`colorblindr`](https://github.com/clauswilke/colorblindr) package.
+[**colorblindr**](https://github.com/clauswilke/colorblindr) package.
 
 For specific uses, several scientific thematic schemes (geologic
 timescale, land cover, FAO soils, etc.) are implemented, but these
 colour schemes may not be colour-blind safe.
 
-All these colour schemes are implemented for use with R `graphics` or
-[`ggplot2`](https://github.com/tidyverse/ggplot2).
+All these colour schemes are implemented for use with base R or
+[**ggplot2**](https://github.com/tidyverse/ggplot2).
 
 ## Installation
 
-You can install the released version of `khroma` from
+You can install the released version of **khroma** from
 [CRAN](https://CRAN.R-project.org):
 
 ``` r
@@ -61,8 +59,8 @@ install.packages("khroma")
 Or install the development version from GitHub with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("nfrerebeau/khroma")
+# install.packages("remotes")
+remotes::install_github("nfrerebeau/khroma")
 ```
 
 ## Usage
@@ -79,19 +77,15 @@ library(ggplot2)
 integer argument returns a vector of colours.
 
 ``` r
+# Paul Tol's bright colour scheme
 bright <- colour("bright")
 ```
 
-If [`crayon`](https://github.com/r-lib/crayon) is installed, colours
-will be nicely printed in the
-console.
+If [**crayon**](https://github.com/r-lib/crayon) is installed on your
+machine and if the `crayon.enabled` option is set to `TRUE` with
+`options()`, colours will be nicely printed in the console.
 
-``` r
-bright(7)
-```
-
-<PRE class="fansi fansi-output"><CODE>#&gt; <span style='background-color: #5F87AF;'>#4477AA</span><span> </span><span style='background-color: #FF8787;'>#EE6677</span><span> </span><span style='background-color: #00AF5F;'>#228833</span><span> </span><span style='background-color: #D7D75F;'>#CCBB44</span><span> </span><span style='background-color: #87D7FF;'>#66CCEE</span><span> </span><span style='background-color: #AF5F87;'>#AA3377</span><span> </span><span style='background-color: #B2B2B2;'>#BBBBBB</span><span>
-</span></CODE></PRE>
+![](https://github.com/nfrerebeau/khroma/raw/master/man/figures/README-crayon.png)
 
 You can disable this feature by setting the `crayon.enabled` option to
 `FALSE`.
@@ -100,7 +94,9 @@ You can disable this feature by setting the `crayon.enabled` option to
 options(crayon.enabled = FALSE)
 bright(7)
 #>      blue       red     green    yellow      cyan    purple      grey 
-#> "#4477AA" "#EE6677" "#228833" "#CCBB44" "#66CCEE" "#AA3377" "#BBBBBB"
+#> "#4477AA" "#EE6677" "#228833" "#CCBB44" "#66CCEE" "#AA3377" "#BBBBBB" 
+#> attr(,"missing")
+#> [1] NA
 ```
 
 ``` r
@@ -121,46 +117,82 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = class)) +
 
 ### Diagnostic tools
 
+#### Test how well the colours are identifiable
+
 ``` r
-# Test how well the colours are identifiable
-plot_map(bright(7))
+# Okabe & Ito's colour scheme
+okabe <- colour("okabe ito")
+
+set.seed(12345)
+plot_map(okabe(8))
 ```
 
-<img src="man/figures/README-usage-colourblind-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind1-1.png" style="display: block; margin: auto;" />
+
+#### Compute CIELAB distance metric
 
 ``` r
+DeltaE <- compare(okabe(8))
+round(DeltaE, 2)
+#>                black orange sky blue bluish green yellow  blue vermilion
+#> orange         64.74                                                    
+#> sky blue       60.95  53.61                                             
+#> bluish green   50.51  42.87    34.69                                    
+#> yellow         88.42  21.72    57.53        38.04                       
+#> blue           39.23  55.35    22.31        38.40  70.37                
+#> vermilion      49.36  22.24    52.27        54.36  43.71 49.62          
+#> reddish purple 53.11  49.01    45.51        63.45  62.54 41.11     37.02
+```
 
-# Simulate colour-blindness
+#### Simulate colour-blindness
+
+``` r
 # convert() returns a modified palette function
-deuteranopia <- convert(bright, mode = "deuteranopia")
-plot_scheme(deuteranopia(7), colours = TRUE)
+deuteranopia <- convert(okabe, mode = "deuteranopia")
+plot_scheme(deuteranopia(8), colours = TRUE)
 ```
 
-<img src="man/figures/README-usage-colourblind-2.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind2-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
-protanopia <- convert(bright, mode = "protanopia")
-plot_scheme(protanopia(7), colours = TRUE)
+protanopia <- convert(okabe, mode = "protanopia")
+plot_scheme(protanopia(8), colours = TRUE)
 ```
 
-<img src="man/figures/README-usage-colourblind-3.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind2-2.png" style="display: block; margin: auto;" />
 
 ``` r
 
-tritanopia <- convert(bright, mode = "tritanopia")
-plot_scheme(tritanopia(7), colours = TRUE)
+tritanopia <- convert(okabe, mode = "tritanopia")
+plot_scheme(tritanopia(8), colours = TRUE)
 ```
 
-<img src="man/figures/README-usage-colourblind-4.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind2-3.png" style="display: block; margin: auto;" />
 
 ``` r
 
-achromatopsia <- convert(bright, mode = "achromatopsia")
-plot_scheme(achromatopsia(7), colours = TRUE)
+achromatopsia <- convert(okabe, mode = "achromatopsia")
+plot_scheme(achromatopsia(8), colours = TRUE)
 ```
 
-<img src="man/figures/README-usage-colourblind-5.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind2-4.png" style="display: block; margin: auto;" />
+
+``` r
+plot_scheme_colourblind(okabe(8))
+```
+
+<img src="man/figures/README-usage-colourblind3-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+# ggplot2 default colour scheme
+# (equally spaced hues around the colour wheel)
+x <- scales::hue_pal()(8)
+plot_scheme_colourblind(x)
+```
+
+<img src="man/figures/README-usage-colourblind3-2.png" style="display: block; margin: auto;" />
 
 ## Colour Schemes
 
@@ -175,21 +207,18 @@ with colours that are:
   - Matching well together.
 
 All the scales presented in Paul Tol’s technical note are implemented
-here, for use with `graphics` or `ggplot2`. Refer to the original
-document for details about the recommended uses.
+here, for use with base R or
+[**ggplot2**](https://github.com/tidyverse/ggplot2). Refer to the
+original document for details about the recommended uses.
 
-See the vignette for a more complete overview:
-
-``` r
-utils::vignette("tol")
-```
+See `vignette("tol")` for a more complete overview.
 
 ### Scientific colour schemes
 
 The following scientific colour schemes are available:
 
-  - International Chronostratigraphic Chart.
-  - AVHRR Global Land Cover Classification.
+  - International Chronostratigraphic Chart;
+  - AVHRR Global Land Cover Classification;
   - FAO Soil Reference Groups.
 
 More will be added in future releases ([suggestions are
@@ -197,11 +226,15 @@ welcome](https://github.com/nfrerebeau/khroma/issues)).
 
 ## Contributing
 
-Please note that the `khroma` project is released with a [Contributor
+Please note that the **khroma** project is released with a [Contributor
 Code of
 Conduct](https://github.com/nfrerebeau/khroma/blob/master/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
-1.  Tol, Paul (2018). *Colour Schemes*. SRON. Technical Note
+1.  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note
     No. SRON/EPS/TN/09-002. URL:
     <https://personal.sron.nl/~pault/data/colourschemes.pdf>.
+
+2.  Okabe, M. & Ito, K. (2008). *Color Universal Design (CUD): How to
+    Make Figures and Presentations That Are Friendly to Colorblind
+    People*. URL: <https://jfly.uni-koeln.de/color/>.

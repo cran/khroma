@@ -2,15 +2,16 @@
 #' \tabular{ll}{
 #'  \strong{Package:} \tab khroma \cr
 #'  \strong{Type:} \tab Package \cr
-#'  \strong{Version:} \tab 1.3.0 \cr
+#'  \strong{Version:} \tab 1.4.0 \cr
 #'  \strong{License:} \tab GPL-3 \cr
 #'  \strong{DOI:} \tab \href{https://doi.org/10.5281/zenodo.1472077}{10.5281/zenodo.1472077}
 #' }
 #' @author
 #' \strong{Full list of authors and contributors} (alphabetic order)
 #'  \tabular{ll}{
+#'   Vincent Arel-Bundock \tab \emph{Université de Montréal, Canada} \cr
 #'   Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
-#'   Brice Lebrun \tab \emph{Aix-Marseille Université, France}
+#'   Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
 #'  }
 #'
 #' \strong{Package maintainer}
@@ -28,3 +29,10 @@
 #' @docType package
 #' @keywords internal
 "_PACKAGE"
+
+#' @importFrom ggplot2 aes continuous_scale discrete_scale scale_color_manual
+#' scale_fill_manual
+#' @importFrom scales alpha gradient_n_pal rescale_mid
+#' @importFrom grDevices colorRampPalette
+#' @importFrom grid gpar grid.newpage grid.rect grid.text unit
+NULL

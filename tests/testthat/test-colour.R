@@ -1,24 +1,26 @@
 context("Colour")
 
 test_that("Palette colours", {
-  palettes <- c("bright", "contrast", "vibrant", "muted", "pale", "dark",
-                "light", "sunset", "BuRd", "PRGn", "YlOrBr", "iridescent",
-                "discrete rainbow", "smooth rainbow", "stratigraphy", "soil",
-                "land")
-  n <- c(7, 3, 7, 9, 6, 6, 9, 11, 9, 9, 9, 23, 23, 34, 175, 24, 14)
+  palettes <- c("okabe ito", "bright", "contrast", "vibrant", "muted", "pale",
+                "dark", "light", "sunset", "BuRd", "PRGn", "YlOrBr",
+                "iridescent", "discrete rainbow", "smooth rainbow",
+                "stratigraphy", "soil", "land")
+  n <- c(8, 7, 3, 7, 9, 6, 6, 9, 11, 9, 9, 9, 23, 23, 34, 175, 24, 14)
 
   for (i in seq_len(length(palettes))) {
     expect_type(colour(palettes[i]), "closure")
     expect_type(color(palettes[i]), "closure")
 
     expect_type(colour(palettes[i])(n[i]), "character")
+    expect_length(colour(palettes[i])(), n[i])
     expect_length(colour(palettes[i])(n[i]), n[i])
-    expect_type(attr(colour(palettes[i]), "name"), "character")
+    expect_identical(attr(colour(palettes[i]), "palette"), palettes[i])
     expect_type(attr(colour(palettes[i]), "type"), "character")
     expect_type(attr(colour(palettes[i]), "interpolate"), "logical")
     expect_type(attr(colour(palettes[i]), "missing"), "character")
     expect_type(attr(colour(palettes[i]), "max"), "integer")
   }
+
   for (i in seq_len(7)) {
     expect_length(colour("bright")(i), i)
   }
@@ -26,19 +28,22 @@ test_that("Palette colours", {
 test_that("Qualitative colours", {
   options(crayon.enabled = FALSE)
 
-  palettes <- c("bright", "contrast", "vibrant", "muted", "pale", "dark",
-                "light", "stratigraphy", "soil", "land")
-  n <- c(7, 3, 7, 9, 6, 6, 9, 175, 24, 14)
+  palettes <- c("okabe ito", "bright", "contrast", "vibrant", "muted", "pale",
+                "dark", "light", "stratigraphy", "soil", "land")
+  n <- c(8, 7, 3, 7, 9, 6, 6, 9, 175, 24, 14)
   for (i in seq_len(length(palettes))) {
     expect_named(colour(palettes[i], names = TRUE)(n[i]))
     expect_null(names(colour(palettes[i], names = FALSE)(n[i])))
     expect_error(colour(palettes[i])(500))
-    expect_equal(
+    expect_equivalent(
       unclass(colour(palettes[i], reverse = TRUE)(n[i])),
       rev(colour(palettes[i], reverse = FALSE)(n[i])),
       label = palettes[i]
     )
   }
+
+  expect_error(colour("bright", force = FALSE)(500))
+  expect_type(colour("bright", force = TRUE)(500), "character")
 })
 test_that("Diverging colours", {
   options(crayon.enabled = FALSE)
@@ -46,7 +51,7 @@ test_that("Diverging colours", {
   palettes <- c("sunset", "BuRd", "PRGn")
   n <- c(11, 9, 9)
   for (i in seq_len(length(palettes))) {
-    expect_equal(
+    expect_equivalent(
       unclass(colour(palettes[i], reverse = TRUE)(n[i])),
       rev(colour(palettes[i], reverse = FALSE)(n[i])),
       label = palettes[i]
@@ -60,7 +65,7 @@ test_that("Sequential colours", {
   palettes <- c("YlOrBr", "iridescent", "smooth rainbow")
   n <- c(9, 23,34)
   for (i in seq_len(length(palettes))) {
-    expect_equal(
+    expect_equivalent(
       unclass(colour(palettes[i], reverse = TRUE)(n[i])),
       rev(colour(palettes[i], reverse = FALSE)(n[i])),
       label = palettes[i]
@@ -81,35 +86,39 @@ test_that("Colour-blind", {
   # Achromatopsia
   ach <- convert(palette, mode = "achromatopsia")
 
-  expect_equivalent(pro(7), c("#6E6EAA", "#7D7D76", "#767633", "#BDBD43",
-                              "#BABAEE", "#474776", "#BBBABB"))
-  expect_equivalent(deu(7), c("#6666AB", "#929273", "#666635", "#C0C043",
-                              "#AAAAF0", "#5A5A73", "#BBBABB"))
-  expect_equivalent(tri(7), c("#3D7D7D", "#EB6868", "#2C7D7D", "#DBABAB",
-                              "#61D0D0", "#A13B3B", "#BABBBA"))
-  expect_equivalent(ach(7), c("#A2A2A2", "#777777", "#3B3B3C", "#535353",
-                              "#E7E7E7", "#707070", "#BABABB"))
+  expect_equal(pro(7), c(blue = "#7070AA", red = "#8A8A76", green = "#7D7D33",
+                         yellow = "#BEBE43", cyan = "#BFBFEE", purple = "#575776",
+                         grey = "#BBBABB"))
+  expect_equal(deu(7), c(blue = "#6969AA", red = "#A4A470", green = "#727237",
+                         yellow = "#C0C042", cyan = "#B2B2EF", purple = "#6D6D73",
+                         grey = "#BBBABB"))
+  expect_equal(tri(7), c(blue = "#307E7E", red = "#ED6868", green = "#3A8080",
+                         yellow = "#D4B1B1", cyan = "#59D0D0", purple = "#A64040",
+                         grey = "#BABBBA"))
+  expect_equal(ach(7), c(blue = "#A4A4A4", red = "#787878", green = "#424243",
+                         yellow = "#5F5F5F", cyan = "#E8E8E8", purple = "#737373",
+                         grey = "#BABABB"))
 })
 test_that("Colour-blind attributes", {
-  palette <- colour("bright")
+  palette <- colour("okabe ito")
   protanopia <- convert(palette, mode = "protanopia")
 
-  expect_equivalent(attr(protanopia, "name"), "bright")
+  expect_equivalent(attr(protanopia, "palette"), "okabe ito")
   expect_equivalent(attr(protanopia, "type"), "qualitative")
   expect_false(attr(protanopia, "interpolate"))
   expect_true(is.na(attr(protanopia, "missing")))
-  expect_equivalent(attr(protanopia, "max"), 7)
+  expect_equivalent(attr(protanopia, "max"), 8)
   expect_equivalent(attr(protanopia, "mode"), "protanopia")
 })
 test_that("Print with crayon", {
-  palette <- colour("bright")
+  palette <- colour("okabe ito")
 
   options(crayon.enabled = FALSE)
-  col <- utils::capture.output(print(palette(7)))
+  col <- utils::capture.output(print(palette(8)))
   expect_type(col, "character")
 
   skip_if_not_installed("crayon")
   options(crayon.enabled = TRUE)
-  col <- utils::capture.output(print(palette(7)))
+  col <- utils::capture.output(print(palette(8)))
   expect_true(crayon::has_style(col))
 })

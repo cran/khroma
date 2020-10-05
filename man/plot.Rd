@@ -2,16 +2,27 @@
 % Please edit documentation in R/plot.R
 \name{plot}
 \alias{plot}
+\alias{plot.colour_scheme}
 \alias{plot_scheme}
 \alias{plot_map}
+\alias{plot_scheme_colourblind}
+\alias{plot_scheme_colorblind}
 \title{Plot Colour Scheme}
 \usage{
+\method{plot}{colour_scheme}(x, ...)
+
 plot_scheme(x, colours = FALSE, names = FALSE, size = 1)
 
 plot_map(x)
+
+plot_scheme_colourblind(x)
+
+plot_scheme_colorblind(x)
 }
 \arguments{
 \item{x}{A \code{\link{character}} vector of colours.}
+
+\item{...}{Currently not used.}
 
 \item{colours}{A \code{\link{logical}} scalar: should the hexadecimal
 representation of the colours be displayed?}
@@ -24,12 +35,21 @@ plotting text should be magnified relative to the default.
 Works the same as \code{cex} parameter of \code{\link[graphics]{par}}.}
 }
 \description{
-\code{plot_scheme} shows colours in a plot.
+\code{plot} allows to quickly display a colour scheme returned by
+\code{\link{colour}}.
 }
 \details{
+\code{plot_scheme} shows colours in a plot.
+
 \code{plot_map} produces a diagnostic map for a given colour scheme.
+
+\code{plot_scheme_colorblind} shows colours in a plot with different types
+of simulated color blindness.
 }
 \examples{
+plot(colour("bright")(7))
+plot(colour("smooth rainbow")(256))
+
 ## Plot colour schemes
 plot_scheme(colour("bright")(7))
 plot_scheme(colour("sunset")(11))
@@ -41,11 +61,16 @@ plot_map(colour("bright")(7))
 plot_map(colour("sunset")(11))
 plot_map(colour("YlOrBr")(9))
 plot_map(colour("discrete rainbow")(14))
+
+## Plot simulated color blindness
+plot_scheme_colorblind(colour("bright")(7))
 }
 \seealso{
-Other diagnostic tools: \code{\link{convert}}
+Other diagnostic tools: 
+\code{\link{compare}()},
+\code{\link{convert}()}
 }
 \author{
-N. Frerebeau
+N. Frerebeau, V. Arel-Bundock
 }
 \concept{diagnostic tools}

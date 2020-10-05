@@ -5,9 +5,9 @@
 \alias{color}
 \title{Colour Palette}
 \usage{
-colour(palette, reverse = FALSE, names = TRUE, ...)
+colour(palette, reverse = FALSE, names = TRUE, lang = "en", force = FALSE, ...)
 
-color(palette, reverse = FALSE, names = TRUE, ...)
+color(palette, reverse = FALSE, names = TRUE, lang = "en", force = FALSE, ...)
 }
 \arguments{
 \item{palette}{A \code{\link{character}} string giving the name of
@@ -19,16 +19,25 @@ vector of colours should be reversed?}
 \item{names}{A \code{\link{logical}} scalar: should the names of the
 colours should be kept in the resulting vector?}
 
+\item{lang}{A \code{\link{character}} string specifying the language for the
+colour names. It must be one of "\code{en}" (english, the default) or
+"\code{fr}" (french).}
+
+\item{force}{A \code{\link{logical}} scalar. If \code{TRUE}, forces the
+colour scheme to be interpolated. It should not be used routinely with
+qualitative colour schemes, as they are designed to be used as is to remain
+colourblind-safe.}
+
 \item{...}{Further arguments passed to
-\code{\link[grDevices]{colorRampPalette}}.}
+\code{\link[grDevices:colorRamp]{colorRampPalette}}.}
 }
 \value{
 A palette function with the following attributes, that when called
  with a single integer argument (the number of levels) returns a (named)
  vector of colours.
  \describe{
-  \item{name}{A \code{\link{character}} string giving the name of the colour
-  scheme.}
+  \item{palette}{A \code{\link{character}} string giving the name of the
+  colour scheme.}
   \item{type}{A \code{\link{character}} string giving the corresponding
   data type. One of "\code{qualitative}", "\code{diverging}" or
   "\code{sequential}".}
@@ -39,6 +48,11 @@ A palette function with the following attributes, that when called
   \item{max}{An \code{\link{integer}} giving the maximum number of colour
   values. Only relevant for non-interpolated colour schemes.}
  }
+
+ For colour schemes that can be interpolated (diverging and sequential data),
+ the colour range can be limited with an additional argument. `range` allows
+ to remove a fraction of the colour domain (before being interpolated; see
+ examples).
 }
 \description{
 Provides qualitative, diverging and sequential colour schemes.
@@ -96,6 +110,14 @@ Provides qualitative, diverging and sequential colour schemes.
  }
 }
 
+\section{Okabe and Ito Colour Scheme}{
+
+ The following (qualitative) colour scheme is available:
+ \describe{
+  \item{okabe ito}{Up to 8 colours.}
+ }
+}
+
 \section{Scientific Colour Schemes}{
 
  The following (qualitative) colour schemes are available:
@@ -107,6 +129,10 @@ Provides qualitative, diverging and sequential colour schemes.
 }
 
 \examples{
+## Okabe and Ito colour scheme
+colour("okabe ito")(8)
+plot_scheme(colour("okabe ito")(8))
+
 ## Paul Tol's colour schemes
 ### Qualitative data
 plot_scheme(colour("bright")(7))
@@ -134,11 +160,19 @@ plot_scheme(colour("stratigraphy")(175))
 plot_scheme(colour("land")(14))
 ### FAO soil reference groups
 plot_scheme(colour("soil")(24))
+
+## Adjust colour levels
+PRGn <- colour("PRGn")
+plot_scheme(PRGn(9, range = c(0.5, 1)))
 }
 \references{
 Jones, A., Montanarella, L. & Jones, R. (Ed.) (2005). \emph{Soil atlas of
  Europe}. Luxembourg: European Commission, Office for Official Publications
  of the European Communities. 128 pp. ISBN: 92-894-8120-X.
+
+ Okabe, M. & Ito, K. (2008). \emph{Color Universal Design (CUD): How to Make
+ Figures and Presentations That Are Friendly to Colorblind People}.
+ URL: \url{https://jfly.uni-koeln.de/color/}.
 
  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
  SRON/EPS/TN/09-002, issue 3.1.
