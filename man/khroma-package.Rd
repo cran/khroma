@@ -20,30 +20,29 @@ An implementation of Paul Tol's colour schemes for
 }
 \details{
 \tabular{ll}{
- \strong{Package:} \tab khroma \cr
- \strong{Type:} \tab Package \cr
- \strong{Version:} \tab 1.4.0 \cr
- \strong{License:} \tab GPL-3 \cr
- \strong{DOI:} \tab \href{https://doi.org/10.5281/zenodo.1472077}{10.5281/zenodo.1472077}
+\strong{Package:} \tab khroma \cr
+\strong{Type:} \tab Package \cr
+\strong{Version:} \tab 1.4.1 \cr
+\strong{License:} \tab GPL-3 \cr
+\strong{DOI:} \tab \doi{10.5281/zenodo.1472077} \cr
 }
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://khroma.archaeo.science}
-  \item \url{https://github.com/nfrerebeau/khroma}
-  \item \url{https://cran.r-project.org/package=khroma}
-  \item Report bugs at \url{https://github.com/nfrerebeau/khroma/issues}
+  \item \url{https://khroma.tesselle.org}
+  \item \url{https://github.com/tesselle/khroma}
+  \item Report bugs at \url{https://github.com/tesselle/khroma/issues}
 }
 
 }
 \author{
 \strong{Full list of authors and contributors} (alphabetic order)
- \tabular{ll}{
-  Vincent Arel-Bundock \tab \emph{Université de Montréal, Canada} \cr
-  Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
-  Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
- }
+\tabular{ll}{
+Vincent Arel-Bundock \tab \emph{Université de Montréal, Canada} \cr
+Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
+Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
+}
 
 \strong{Package maintainer}
 

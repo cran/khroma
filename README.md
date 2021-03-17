@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![Travis CI Build
-Status](https://travis-ci.org/nfrerebeau/khroma.svg?branch=master)](https://travis-ci.org/nfrerebeau/khroma)
-[![codecov](https://codecov.io/gh/nfrerebeau/khroma/branch/master/graph/badge.svg)](https://codecov.io/gh/nfrerebeau/khroma)
+[![R build
+status](https://github.com/tesselle/khroma/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/khroma/actions)
+[![codecov](https://codecov.io/gh/tesselle/khroma/branch/master/graph/badge.svg)](https://codecov.io/gh/tesselle/khroma)
 
 [![CRAN
 Version](http://www.r-pkg.org/badges/version/khroma)](https://cran.r-project.org/package=khroma)
@@ -19,8 +19,6 @@ Downloads](http://cranlogs.r-pkg.org/badges/khroma)](https://cran.r-project.org/
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1472077.svg)](https://doi.org/10.5281/zenodo.1472077)
 <!-- badges: end -->
@@ -31,8 +29,8 @@ Color blindness affects a large number of individuals. When
 communicating scientific results colour palettes must therefore be
 carefully chosen to be accessible to all readers.
 
-This R package provides an implementation of Paul Tol\[1\] and Okabe and
-Ito\[2\] colour schemes. These schemes are ready for each type of data
+This R package provides an implementation of Paul Tol[1] and Okabe and
+Ito[2] colour schemes. These schemes are ready for each type of data
 (qualitative, diverging or sequential), with colours that are distinct
 for all people, including colour-blind readers. This package also
 provides tools to simulate colour-blindness and to test how well the
@@ -56,7 +54,7 @@ You can install the released version of **khroma** from
 install.packages("khroma")
 ```
 
-Or install the development version from GitHub with:
+And the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
@@ -108,8 +106,8 @@ plot_scheme(bright(7), colours = TRUE)
 
 ``` r
 # Use with ggplot2
-ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = class)) +
-  geom_point() +
+ggplot2::ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = class)) +
+  ggplot2::geom_point() +
   scale_colour_bright()
 ```
 
@@ -155,7 +153,6 @@ plot_scheme(deuteranopia(8), colours = TRUE)
 <img src="man/figures/README-usage-colourblind2-1.png" style="display: block; margin: auto;" />
 
 ``` r
-
 protanopia <- convert(okabe, mode = "protanopia")
 plot_scheme(protanopia(8), colours = TRUE)
 ```
@@ -163,7 +160,6 @@ plot_scheme(protanopia(8), colours = TRUE)
 <img src="man/figures/README-usage-colourblind2-2.png" style="display: block; margin: auto;" />
 
 ``` r
-
 tritanopia <- convert(okabe, mode = "tritanopia")
 plot_scheme(tritanopia(8), colours = TRUE)
 ```
@@ -171,7 +167,6 @@ plot_scheme(tritanopia(8), colours = TRUE)
 <img src="man/figures/README-usage-colourblind2-3.png" style="display: block; margin: auto;" />
 
 ``` r
-
 achromatopsia <- convert(okabe, mode = "achromatopsia")
 plot_scheme(achromatopsia(8), colours = TRUE)
 ```
@@ -185,7 +180,6 @@ plot_scheme_colourblind(okabe(8))
 <img src="man/figures/README-usage-colourblind3-1.png" style="display: block; margin: auto;" />
 
 ``` r
-
 # ggplot2 default colour scheme
 # (equally spaced hues around the colour wheel)
 x <- scales::hue_pal()(8)
@@ -201,10 +195,10 @@ plot_scheme_colourblind(x)
 Paul Tol offers carefully chosen schemes, ready for each type of data,
 with colours that are:
 
-  - Distinct for all people, including colour-blind readers.
-  - Distinct from black and white.
-  - Distinct on screen and paper.
-  - Matching well together.
+-   Distinct for all people, including colour-blind readers.
+-   Distinct from black and white.
+-   Distinct on screen and paper.
+-   Matching well together.
 
 All the scales presented in Paul Tol’s technical note are implemented
 here, for use with base R or
@@ -217,24 +211,24 @@ See `vignette("tol")` for a more complete overview.
 
 The following scientific colour schemes are available:
 
-  - International Chronostratigraphic Chart;
-  - AVHRR Global Land Cover Classification;
-  - FAO Soil Reference Groups.
+-   International Chronostratigraphic Chart;
+-   AVHRR Global Land Cover Classification;
+-   FAO Soil Reference Groups.
 
 More will be added in future releases ([suggestions are
-welcome](https://github.com/nfrerebeau/khroma/issues)).
+welcome](https://github.com/tesselle/khroma/issues)).
 
 ## Contributing
 
 Please note that the **khroma** project is released with a [Contributor
 Code of
-Conduct](https://github.com/nfrerebeau/khroma/blob/master/.github/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/tesselle/khroma/blob/master/.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
-1.  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note
-    No. SRON/EPS/TN/09-002. URL:
-    <https://personal.sron.nl/~pault/data/colourschemes.pdf>.
+[1] Tol, P. (2018). *Colour Schemes*. SRON. Technical Note
+No. SRON/EPS/TN/09-002. URL:
+<https://personal.sron.nl/~pault/data/colourschemes.pdf>.
 
-2.  Okabe, M. & Ito, K. (2008). *Color Universal Design (CUD): How to
-    Make Figures and Presentations That Are Friendly to Colorblind
-    People*. URL: <https://jfly.uni-koeln.de/color/>.
+[2] Okabe, M. & Ito, K. (2008). *Color Universal Design (CUD): How to
+Make Figures and Presentations That Are Friendly to Colorblind People*.
+URL: <https://jfly.uni-koeln.de/color/>.

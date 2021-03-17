@@ -3,32 +3,32 @@
 NULL
 
 # Discrete =====================================================================
-#' Paul Tol's Discrete Colour Schemes for \pkg{ggplot2}
+#' Paul Tol's Discrete Color Schemes for \pkg{ggplot2}
 #'
-#' Provides qualitative colour scales from Paul Tol's \emph{Colour Schemes}.
-#' @param ... Arguments passed to \code{\link[ggplot2]{discrete_scale}}.
-#' @param reverse A \code{\link{logical}} scalar. Should the resulting
-#'  vector of colours be reversed?
-#' @param aesthetics A \code{\link{character}} string or vector of character
+#' Provides qualitative color scales from Paul Tol's *Colour Schemes*.
+#' @param ... Arguments passed to [ggplot2::discrete_scale()].
+#' @param reverse A [`logical`] scalar. Should the resulting
+#'  vector of colors be reversed?
+#' @param aesthetics A [`character`] string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
 #' @details
-#'  The qualitative colour schemes are used as given (no interpolation):
-#'  colours are picked up to the maximum number of supported values.
+#'  The qualitative color schemes are used as given (no interpolation):
+#'  colors are picked up to the maximum number of supported values.
 #'
 #'  \tabular{ll}{
-#'   \strong{Palette} \tab \strong{Max.} \cr
-#'   bright \tab 7 \cr
-#'   contrast \tab 3 \cr
-#'   vibrant \tab 7 \cr
-#'   muted \tab 9 \cr
-#'   pale \tab 6 \cr
-#'   dark \tab 6 \cr
-#'   light \tab 9 \cr
+#'   **Palette** \tab **Max.** \cr
+#'   `bright` \tab 7 \cr
+#'   `contrast` \tab 3 \cr
+#'   `vibrant` \tab 7 \cr
+#'   `muted` \tab 9 \cr
+#'   `pale` \tab 6 \cr
+#'   `dark` \tab 6 \cr
+#'   `light` \tab 9 \cr
 #'  }
-#' @inheritSection colour Qualitative colour schemes
-#' @return A \code{\link[ggplot2:discrete_scale]{discrete}} scale.
+#' @inheritSection colour Qualitative color schemes
+#' @return A [discrete][ggplot2::discrete_scale] scale.
 #' @references
-#'  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+#'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002, issue 3.1.
 #'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-discrete.R
@@ -40,7 +40,7 @@ NULL
 #' @rdname scale_tol_discrete
 NULL
 
-## ---------------------------------------------------------------------- Bright
+## Bright ----------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_bright <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -57,7 +57,7 @@ scale_fill_bright <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "bright", reverse, ...)
 }
 
-## --------------------------------------------------------------- High contrast
+## High contrast ---------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_contrast <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -74,7 +74,7 @@ scale_fill_contrast <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "contrast", reverse, ...)
 }
 
-## --------------------------------------------------------------------- Vibrant
+## Vibrant ---------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_vibrant <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -91,7 +91,7 @@ scale_fill_vibrant <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "vibrant", reverse, ...)
 }
 
-## ----------------------------------------------------------------------- Muted
+## Muted -----------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_muted <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -108,7 +108,7 @@ scale_fill_muted <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "muted", reverse, ...)
 }
 
-## ------------------------------------------------------------------------ Pale
+## Pale ------------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_pale <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -125,7 +125,7 @@ scale_fill_pale <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "pale", reverse, ...)
 }
 
-## ------------------------------------------------------------------------ Dark
+## Dark ------------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_dark <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -142,7 +142,7 @@ scale_fill_dark <- function(..., reverse = FALSE, aesthetics = "fill") {
   scale_discrete(aesthetics, "dark", reverse, ...)
 }
 
-## ----------------------------------------------------------------------- Light
+## Light -----------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_discrete
 scale_colour_light <- function(..., reverse = FALSE, aesthetics = "colour") {
@@ -162,32 +162,35 @@ scale_fill_light <- function(..., reverse = FALSE, aesthetics = "fill") {
 # Diverging ====================================================================
 #' Paul Tol's Diverging Colour Schemes for \pkg{ggplot2}
 #'
-#' Provides diverging colour scales from Paul Tol's \emph{Colour Schemes}.
-#' @param ... Arguments passed to \code{\link[ggplot2]{continuous_scale}}.
-#' @param reverse A \code{\link{logical}} scalar. Should the resulting
-#'  vector of colours be reversed?
-#' @param range A length-two \code{\link{numeric}} vector specifying the
-#' fraction of the scheme's colour domain to keep.
-#' @param midpoint A length-one \code{\link{numeric}} vector giving the midpoint
-#'  (in data value) of the diverging scale. Defaults to \code{0}.
-#' @param aesthetics A \code{\link{character}} string or vector of character
+#' Provides diverging colour scales from Paul Tol's *Colour Schemes*.
+#' @param ... Arguments passed to [ggplot2::continuous_scale()].
+#' @param reverse A [`logical`] scalar. Should the resulting
+#'  vector of colors be reversed?
+#' @param range A length-two [`numeric`] vector specifying the
+#' fraction of the scheme's color domain to keep.
+#' @param midpoint A length-one [`numeric`] vector giving the midpoint
+#'  (in data value) of the diverging scale. Defaults to `0`.
+#' @param aesthetics A [`character`] string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
+#' @param discrete A [`logical`] scalar: should the color scheme be
+#'  used as a discrete scale?. If `TRUE`, it is a departure from Paul Tol's
+#'  recommendations and likely a very poor use of color.
 #' @details
-#'  If more colours than defined are needed from a given scheme, the colour
+#'  If more colors than defined are needed from a given scheme, the color
 #'  coordinates are linearly interpolated to provide a continuous version of the
 #'  scheme.
-#'  Note that the default colour for \code{NA} can be overridden by passing
-#'  a value to \code{\link[ggplot2]{continuous_scale}}.
+#'  Note that the default color for `NA` can be overridden by passing
+#'  a value to [ggplot2::continuous_scale()].
 #'
 #'  \tabular{lll}{
-#'   \strong{Palette} \tab \strong{Max. colours} \tab \strong{NA value} \cr
-#'   sunset \tab 11 \tab #FFFFFF \cr
-#'   BuRd \tab 9 \tab #FFEE99 \cr
-#'   PRGn \tab 9 \tab #FFEE99 \cr
+#'   **Palette** \tab **Max. colours** \tab **NA value** \cr
+#'   `sunset` \tab 11 \tab #FFFFFF \cr
+#'   `BuRd` \tab 9 \tab #FFEE99 \cr
+#'   `PRGn` \tab 9 \tab #FFEE99 \cr
 #'  }
-#' @return A \code{\link[ggplot2:continuous_scale]{continuous}} scale.
+#' @return A [continuous][ggplot2::continuous_scale] scale.
 #' @references
-#'  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+#'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002, issue 3.1.
 #'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-diverging.R
@@ -199,13 +202,17 @@ scale_fill_light <- function(..., reverse = FALSE, aesthetics = "fill") {
 #' @rdname scale_tol_diverging
 NULL
 
-## ---------------------------------------------------------------------- Sunset
+## Sunset ----------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_diverging
 scale_colour_sunset <- function(..., reverse = FALSE, range = c(0, 1),
-                                midpoint = 0, aesthetics = "colour") {
-  scale_continuous(aesthetics, "sunset", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                                midpoint = 0, discrete = FALSE, aesthetics = "colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "sunset", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "sunset", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
 #' @export
@@ -215,18 +222,26 @@ scale_color_sunset <- scale_colour_sunset
 #' @export
 #' @rdname scale_tol_diverging
 scale_fill_sunset <- function(..., reverse = FALSE, range = c(0, 1),
-                              midpoint = 0, aesthetics = "fill") {
-  scale_continuous(aesthetics, "sunset", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                              midpoint = 0, discrete = FALSE, aesthetics = "fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "sunset", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "sunset", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
-## ------------------------------------------------------------------------ BuRd
+## BuRd ------------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_diverging
 scale_colour_BuRd <- function(..., reverse = FALSE, range = c(0, 1),
-                              midpoint = 0, aesthetics = "colour") {
-  scale_continuous(aesthetics, "BuRd", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                              midpoint = 0, discrete = FALSE, aesthetics = "colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "BuRd", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "BuRd", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
 #' @export
@@ -236,18 +251,26 @@ scale_color_BuRd <- scale_colour_BuRd
 #' @export
 #' @rdname scale_tol_diverging
 scale_fill_BuRd <- function(..., reverse = FALSE, range = c(0, 1),
-                            midpoint = 0, aesthetics = "fill") {
-  scale_continuous(aesthetics, "BuRd", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                            midpoint = 0, discrete = FALSE, aesthetics = "fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "BuRd", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "BuRd", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
-## ------------------------------------------------------------------------ PRGn
+## PRGn ------------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_diverging
 scale_colour_PRGn <- function(..., reverse = FALSE, range = c(0, 1),
-                              midpoint = 0, aesthetics = "colour") {
-  scale_continuous(aesthetics, "PRGn", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                              midpoint = 0, discrete = FALSE, aesthetics = "colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "PRGn", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "PRGn", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
 #' @export
@@ -257,44 +280,48 @@ scale_color_PRGn <- scale_colour_PRGn
 #' @export
 #' @rdname scale_tol_diverging
 scale_fill_PRGn <- function(..., reverse = FALSE, range = c(0, 1),
-                            midpoint = 0, aesthetics = "fill") {
-  scale_continuous(aesthetics, "PRGn", reverse = reverse, range = range,
-                   midpoint = midpoint, ...)
+                            midpoint = 0, discrete = FALSE, aesthetics = "fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "PRGn", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "PRGn", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
 }
 
 # Sequential ===================================================================
-#' Paul Tol's Sequential Colour Schemes for \pkg{ggplot2}
+#' Paul Tol's Sequential Color Schemes for \pkg{ggplot2}
 #'
-#' Provides sequential colour scales from Paul Tol's \emph{Colour Schemes}.
-#' @param ... Arguments passed to \code{\link[ggplot2]{continuous_scale}}.
-#' @param reverse A \code{\link{logical}} scalar. Should the resulting
-#'  vector of colours be reversed?
-#' @param range A length-two \code{\link{numeric}} vector specifying the
-#' fraction of the scheme's colour domain to keep.
-#' @param aesthetics A \code{\link{character}} string or vector of character
+#' Provides sequential color scales from Paul Tol's *Colour Schemes*.
+#' @param ... Arguments passed to [ggplot2::continuous_scale()].
+#' @param reverse A [`logical`] scalar. Should the resulting
+#'  vector of colors be reversed?
+#' @param range A length-two [`numeric`] vector specifying the
+#' fraction of the scheme's color domain to keep.
+#' @param aesthetics A [`character`] string or vector of character
 #'  strings listing the name(s) of the aesthetic(s) that this scale works with.
-#' @param discrete A \code{\link{logical}} scalar: should the colour scheme be
-#'  used as a discrete scale?. If \code{TRUE}, it is a departure from Paul Tol's
-#'  recommendations and likely a very poor use of colour.
+#' @param discrete A [`logical`] scalar: should the color scheme be
+#'  used as a discrete scale?. If `TRUE`, it is a departure from Paul Tol's
+#'  recommendations and likely a very poor use of color.
 #' @details
-#'  If more colours than defined are needed from a given scheme, the colour
+#'  If more colors than defined are needed from a given scheme, the color
 #'  coordinates are linearly interpolated to provide a continuous version of the
-#'  scheme, with the exception of the \code{discrete rainbow} scheme (see
-#'  below).
-#'  Note that the default colour for \code{NA} can be overridden by passing
-#'  a value to \code{\link[ggplot2]{continuous_scale}}.
+#'  scheme, with the exception of the `discrete rainbow` scheme (see below).
+#'
+#'  Note that the default color for `NA` can be overridden by passing
+#'  a value to [ggplot2::continuous_scale()].
 #'
 #'  \tabular{lll}{
-#'   \strong{Palette} \tab \strong{Max. colours} \tab \strong{NA value} \cr
-#'   YlOrBr \tab 9 \tab #888888 \cr
-#'   iridescent \tab 23 \tab #999999 \cr
-#'   discrete rainbow \tab 23 \tab #777777 \cr
-#'   smooth rainbow \tab 34 \tab #666666 \cr
+#'   **Palette** \tab **Max. colors** \tab **NA value** \cr
+#'   `YlOrBr` \tab 9 \tab #888888 \cr
+#'   `iridescent` \tab 23 \tab #999999 \cr
+#'   `discrete rainbow` \tab 23 \tab #777777 \cr
+#'   `smooth rainbow` \tab 34 \tab #666666 \cr
 #'  }
-#' @inheritSection colour Rainbow colour scheme
-#' @return A \code{\link[ggplot2:continuous_scale]{continuous}} scale.
+#' @inheritSection colour Rainbow color scheme
+#' @return A [continuous][ggplot2::continuous_scale] scale.
 #' @references
-#'  Tol, P. (2018). \emph{Colour Schemes}. SRON. Technical Note No.
+#'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
 #'  SRON/EPS/TN/09-002, issue 3.1.
 #'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #' @example inst/examples/ex-tol-sequential.R
@@ -306,7 +333,7 @@ scale_fill_PRGn <- function(..., reverse = FALSE, range = c(0, 1),
 #' @rdname scale_tol_sequential
 NULL
 
-## ---------------------------------------------------------------------- YlOrBr
+## YlOrBr ----------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_sequential
 scale_colour_YlOrBr <- function(..., reverse = FALSE, range = c(0, 1),
@@ -335,7 +362,7 @@ scale_fill_YlOrBr <- function(..., reverse = FALSE, range = c(0, 1),
   }
 }
 
-## ------------------------------------------------------------------ Iridescent
+## Iridescent ------------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_sequential
 scale_colour_iridescent <- function(..., reverse = FALSE, range = c(0, 1),
@@ -364,7 +391,7 @@ scale_fill_iridescent <- function(..., reverse = FALSE, range = c(0, 1),
   }
 }
 
-## ------------------------------------------------------------ Discrete Rainbow
+## Discrete Rainbow ------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_sequential
 scale_colour_discreterainbow <- function(..., reverse = FALSE,
@@ -383,7 +410,7 @@ scale_fill_discreterainbow <- function(..., reverse = FALSE,
   scale_discrete(aesthetics, "discrete rainbow", reverse = reverse, ...)
 }
 
-## -------------------------------------------------------------- Smooth Rainbow
+## Smooth Rainbow --------------------------------------------------------------
 #' @export
 #' @rdname scale_tol_sequential
 scale_colour_smoothrainbow <- function(..., reverse = FALSE, range = c(0, 1),
