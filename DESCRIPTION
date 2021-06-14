@@ -1,6 +1,6 @@
 Package: khroma
 Title: Colour Schemes for Scientific Data Visualization
-Version: 1.5.0
+Version: 1.6.0
 Authors@R: 
     c(person(given = "Nicolas",
              family = "Frerebeau",
@@ -27,13 +27,14 @@ Description: Colour schemes ready for each type of data (qualitative,
     how well the colours of any palette are identifiable. Several
     scientific thematic schemes (geologic timescale, land cover, FAO
     soils, etc.) are also implemented.
-License: GPL-3
-URL: https://khroma.tesselle.org, https://github.com/tesselle/khroma
+License: GPL (>= 3)
+URL: https://packages.tesselle.org/khroma/,
+        https://github.com/tesselle/khroma
 BugReports: https://github.com/tesselle/khroma/issues
 Depends: R (>= 3.3)
-Imports: ggplot2, grDevices, grid, scales, spacesXYZ
-Suggests: covr, crayon, fansi, knitr, rmarkdown, testthat (>= 3.0.0),
-        vdiffr
+Imports: grDevices, grid, stats, utils
+Suggests: covr, crayon, fansi, ggplot2, knitr, rmarkdown, scales,
+        spacesXYZ, testthat (>= 3.0.0), vdiffr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -43,9 +44,9 @@ Collate: 'anomalize.R' 'colour.R' 'compare.R' 'convert.R' 'ggplot2.R'
         'scale_colour_okabeito.R' 'scale_colour_science.R'
         'scale_colour_tol.R'
 NeedsCompilation: no
-Packaged: 2021-04-22 15:54:18 UTC; nicolas
+Packaged: 2021-06-14 15:52:03 UTC; nicolas
 Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>),
   Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>),
   Vincent Arel-Bundock [ctb] (<https://orcid.org/0000-0003-2042-7063>)
 Repository: CRAN
-Date/Publication: 2021-04-23 04:30:07 UTC
+Date/Publication: 2021-06-14 16:10:02 UTC
