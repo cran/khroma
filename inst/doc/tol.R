@@ -12,9 +12,9 @@ library(khroma)
 bright <- colour("bright")
 plot_scheme(bright(7), colours = TRUE, names = TRUE, size = 0.9)
 
-## ----tol_quali_contrast, fig.height = 2, fig.width = 7------------------------
-contrast <- colour("contrast")
-plot_scheme(contrast(3), colours = TRUE, names = TRUE, size = 0.9)
+## ----tol_quali_highcontrast, fig.height = 2, fig.width = 7--------------------
+highcontrast <- colour("high contrast")
+plot_scheme(highcontrast(3), colours = TRUE, names = TRUE, size = 0.9)
 
 ## ----tol_quali_vibrant, fig.height=2, fig.width=7-----------------------------
 vibrant <- colour("vibrant")
@@ -24,9 +24,9 @@ plot_scheme(vibrant(7), colours = TRUE, names = TRUE, size = 0.9)
 muted <- colour("muted")
 plot_scheme(muted(9), colours = TRUE, names = TRUE, size = 0.9)
 
-## ----tol_quali_light, fig.height=2, fig.width=7-------------------------------
-light <- colour("light")
-plot_scheme(light(9), colours = TRUE, names = TRUE, size = 0.9)
+## ----tol_quali_mediumcontrast, fig.height = 2, fig.width = 7------------------
+mediumcontrast <- colour("medium contrast")
+plot_scheme(mediumcontrast(6), colours = TRUE, names = TRUE, size = 0.9)
 
 ## ----tol_quali_pale_dark, fig.height=2, fig.width=7---------------------------
 pale <- colour("pale")
@@ -34,6 +34,10 @@ plot_scheme(pale(6), colours = TRUE, names = TRUE, size = 0.9)
 
 dark <- colour("dark")
 plot_scheme(dark(6), colours = TRUE, names = TRUE, size = 0.9)
+
+## ----tol_quali_light, fig.height=2, fig.width=7-------------------------------
+light <- colour("light")
+plot_scheme(light(9), colours = TRUE, names = TRUE, size = 0.9)
 
 ## ----tol_div_sunset, fig.height=2, fig.width=7--------------------------------
 sunset <- colour("sunset")
@@ -62,9 +66,9 @@ plot_scheme(discrete_rainbow(14), colours = TRUE, size = 0.7)
 ## ----tol_seq_adjust, fig.height=2, fig.width=7--------------------------------
 smooth_rainbow <- colour("smooth rainbow")
 
-# Start at purple instead of off-white
+## Start at purple instead of off-white
 plot(smooth_rainbow(256, range = c(0.25, 1)))
-# End at red instead of brown
+## End at red instead of brown
 plot(smooth_rainbow(256, range = c(0, 0.9)))
 
 ## ----tol_quali, echo=FALSE, fig.height = 2, fig.width = 7, fig.show='hold', fig.cap='Diagnostic maps for the bright, vibrant, muted and light (from top to bottom) qualitative colour schemes.'----

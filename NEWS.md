@@ -1,4 +1,15 @@
+# khroma 1.7.0
+
+## New functions
+* Add Paul Tol's high and medium contrast colour schemes: 
+  `scale_*_mediumcontrast` and `scale_*_highcontrast` (#9).
+
+## Bugfixes & changes
+* Deprecate `scale_*_contrast`.
+
 # khroma 1.6.0
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4947109.svg)](https://doi.org/10.5281/zenodo.4947109)
 
 ## New functions
 * Add `info()` to get a table of all available palettes.
@@ -19,6 +30,7 @@
   * Cyclic colour schemes: `scale_*_brocO`, `scale_*_corkO`, `scale_*_vikO`, `scale_*_romaO`, `scale_*_bamO`.
 
 # khroma 1.4.1
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4612091.svg)](https://doi.org/10.5281/zenodo.4612091)
 
 ## Bugfixes & changes
@@ -26,6 +38,7 @@
 * Fix conflict with the `name` argument of `ggplot2::discrete_scale()` and `ggplot2::scale_continuous()`.
 
 # khroma 1.4.0
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4067906.svg)](https://doi.org/10.5281/zenodo.4067906)
 
 ## New functions
@@ -46,6 +59,7 @@
 * Move **ggplot2** and **scales** from Suggests to Imports.
 
 # khroma 1.3.0
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3519838.svg)](https://doi.org/10.5281/zenodo.3519838)
 
 ## Bugfixes & changes
@@ -58,6 +72,7 @@
 * Move **ggplot2** and **scales** from Imports to Suggests.
 
 # khroma 1.2.0
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3371615.svg)](https://doi.org/10.5281/zenodo.3371615)
 
 ## New functions
@@ -72,6 +87,7 @@
 * Add a vignette for Paul Tol's colour schemes.
 
 # khroma 1.1.3
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3239344.svg)](https://doi.org/10.5281/zenodo.3239344)
 
 ## New functions
@@ -85,6 +101,7 @@
 * The documentation is expanded with several remarks on the use of Paul Tol's colour schemes.
 
 # khroma 1.1.2
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3237015.svg)](https://doi.org/10.5281/zenodo.3237015)
 
 ## New functions
@@ -96,6 +113,7 @@
 * Remove `arrange()`.
 
 # khroma 1.1.1
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2635680.svg)](https://doi.org/10.5281/zenodo.2635680)
 
 ## Bugfixes & changes
@@ -106,6 +124,7 @@
 * Reduce required R version to 3.1.
 
 # khroma 1.1.0
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2577258.svg)](https://doi.org/10.5281/zenodo.2577258)
 
 ## New functions
@@ -116,6 +135,7 @@
 * Add the *FAO Soil Reference Groups* colour scheme.
 
 # khroma 1.0.0
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1472078.svg)](https://doi.org/10.5281/zenodo.1472078)
 
 * First release (initial version on CRAN).
