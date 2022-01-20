@@ -1,11 +1,7 @@
-## ---- include=FALSE-----------------------------------------------------------
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
- fig.align = "center"
-)
+## ----setup, include=FALSE-----------------------------------------------------
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
-## ----setup--------------------------------------------------------------------
+## ----packages-----------------------------------------------------------------
 library(khroma)
 
 ## ----tol_quali_bright, fig.height = 2, fig.width = 7--------------------------
@@ -84,10 +80,20 @@ plot_map(sunset(11))
 plot_map(BuRd(9))
 plot_map(PRGn(9))
 
+## ----tol_div_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='30%', fig.show='hold', fig.cap='Diagnostic maps for the sunset, BuRd and PRGn diverging colour schemes.'----
+plot_tiles(colour("sunset")(128), n = 256)
+plot_tiles(colour("BuRd")(128), n = 256)
+plot_tiles(colour("PRGn")(128), n = 256)
+
 ## ----tol_seq, echo=FALSE, fig.height = 2, fig.width = 7, fig.show='hold', fig.cap='Diagnostic maps for the YlOrBr, iridescent, discrete rainbow and smooth rainbow (from top to bottom) sequential colour schemes.'----
 set.seed(12345)
 plot_map(YlOrBr(9))
 plot_map(iridescent(23))
 plot_map(discrete_rainbow(14))
 plot_map(smooth_rainbow(23))
+
+## ----tol_seq_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='30%', fig.show='hold', fig.cap='Diagnostic maps for the YlOrBr, iridescent and smooth rainbow sequential colour schemes.'----
+plot_tiles(colour("YlOrBr")(128), n = 256)
+plot_tiles(colour("iridescent")(128), n = 256)
+plot_tiles(colour("smooth rainbow")(128), n = 256)
 

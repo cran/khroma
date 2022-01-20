@@ -8,10 +8,10 @@ test_that("Palette informations", {
   expect_snapshot(info(), cran = TRUE)
 })
 test_that("Palette colours", {
-  palettes <- c("okabe ito", "bright", "high contrast", "vibrant", "muted",
-                "medium contrast", "pale", "dark", "light",
+  palettes <- c("okabeito", "bright", "highcontrast", "vibrant", "muted",
+                "mediumcontrast", "pale", "dark", "light",
                 "sunset", "BuRd", "PRGn",
-                "YlOrBr", "iridescent", "discrete rainbow", "smooth rainbow",
+                "YlOrBr", "iridescent", "discreterainbow", "smoothrainbow",
                 "stratigraphy", "soil", "land")
   n <- c(8, 7, 3, 7, 9, 6, 6, 6, 9, 11, 9, 9, 9, 23, 23, 34, 175, 24, 14)
 
@@ -115,7 +115,7 @@ test_that("Colour-blind attributes", {
   palette <- colour("okabe ito")
   protanopia <- convert(palette, mode = "protanopia")
 
-  expect_true(attr(protanopia, "palette") == "okabe ito")
+  expect_true(attr(protanopia, "palette") == "okabeito")
   expect_true(attr(protanopia, "type") == "qualitative")
   expect_false(attr(protanopia, "interpolate"))
   expect_true(is.na(attr(protanopia, "missing")))
@@ -124,15 +124,30 @@ test_that("Colour-blind attributes", {
 })
 test_that("Print with crayon", {
   skip_if_not_installed("crayon")
-  options(crayon.enabled = FALSE)
 
   palette <- colour("okabe ito")
-
   col <- utils::capture.output(print(palette(8)))
   expect_type(col, "character")
 
-  skip_if_not_installed("crayon")
-  options(crayon.enabled = TRUE)
+  local_reproducible_output(crayon = TRUE)
   col <- utils::capture.output(print(palette(8)))
   expect_true(crayon::has_style(col))
+})
+test_that("Scale builder", {
+  skip_if_not_installed("ggplot2")
+
+  pal_colour <- scale_colour_picker(palette = "okabeito")
+  expect_true(all.equal(pal_colour, scale_colour_okabeito()))
+
+  pal_colour_rev <- scale_colour_picker(reverse = TRUE, palette = "okabeito")
+  expect_true(all.equal(pal_colour_rev, scale_colour_okabeito(reverse = TRUE)))
+
+  pal_fill <- scale_fill_picker(palette = "YlOrBr")
+  expect_true(all.equal(pal_fill, scale_fill_YlOrBr()))
+
+  pal_edge_colour <- scale_edge_colour_picker(palette = "okabeito")
+  expect_true(all.equal(pal_edge_colour, scale_edge_colour_okabeito()))
+
+  pal_edge_fill <- scale_edge_fill_picker(palette = "YlOrBr")
+  expect_true(all.equal(pal_edge_fill, scale_edge_fill_YlOrBr()))
 })

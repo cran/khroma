@@ -14,7 +14,7 @@
 \alias{scale_colour_smoothrainbow}
 \alias{scale_color_smoothrainbow}
 \alias{scale_fill_smoothrainbow}
-\title{Paul Tol's Sequential Colour Schemes for \pkg{ggplot2}}
+\title{Paul Tol's Sequential Colour Schemes for \pkg{ggplot2} and \pkg{ggraph}}
 \usage{
 scale_colour_YlOrBr(
   ...,
@@ -128,8 +128,8 @@ a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.
 \strong{Palette} \tab \strong{Max. colors} \tab \strong{NA value} \cr
 \code{YlOrBr} \tab 9 \tab #888888 \cr
 \code{iridescent} \tab 23 \tab #999999 \cr
-\verb{discrete rainbow} \tab 23 \tab #777777 \cr
-\verb{smooth rainbow} \tab 34 \tab #666666 \cr
+\code{discreterainbow} \tab 23 \tab #777777 \cr
+\code{smoothrainbow} \tab 34 \tab #666666 \cr
 }
 }
 \section{Rainbow colour scheme}{
@@ -149,8 +149,8 @@ schemes that are reasonably clear in colour-blind vision. To remain
 colour-blind safe, these two schemes must comply with the following
 conditions:
 \describe{
-\item{\verb{discrete rainbow}}{This scheme must not be interpolated.}
-\item{\verb{smooth rainbow}}{This scheme does not have to be used over the full
+\item{\code{discreterainbow}}{This scheme must not be interpolated.}
+\item{\code{smoothrainbow}}{This scheme does not have to be used over the full
 range.}
 }
 }
@@ -181,15 +181,15 @@ Other colour-blind safe colour schemes:
 \code{\link{scale_crameri_diverging}},
 \code{\link{scale_crameri_mutlisequential}},
 \code{\link{scale_crameri_sequential}},
+\code{\link{scale_edge_colour_okabeito}()},
 \code{\link{scale_okabeito_discrete}},
-\code{\link{scale_tol_discrete}},
 \code{\link{scale_tol_diverging}}
 
 Other sequential colour schemes: 
 \code{\link{scale_crameri_sequential}}
 
 Other Paul Tol's colour schemes: 
-\code{\link{scale_tol_discrete}},
+\code{\link{scale_edge_colour_okabeito}()},
 \code{\link{scale_tol_diverging}}
 }
 \author{

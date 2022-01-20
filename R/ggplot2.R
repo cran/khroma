@@ -2,6 +2,57 @@
 #' @include colour.R
 NULL
 
+#' Colour Scale Builder
+#'
+#' Builds a colour scale for \pkg{ggplot2} or \pkg{ggraph}.
+#' @param palette A [`character`] string giving the name of the colour scheme to
+#'  be used (see [info()]).
+#' @param ... Extra parameters to be passed to the colour scale function.
+#' @return A [discrete][ggplot2::discrete_scale] or
+#'  [continuous][ggplot2::continuous_scale] scale.
+#' @example inst/examples/ex-pick.R
+#' @author N. Frerebeau
+#' @family colour palettes
+#' @name scale_picker
+#' @rdname scale_picker
+NULL
+
+#' @export
+#' @rdname scale_picker
+scale_colour_picker <- function(..., palette = "YlOrBr") {
+  fun <- sprintf("scale_colour_%s", palette)
+  do.call(fun, args = list(...))
+}
+
+#' @export
+#' @rdname scale_picker
+scale_color_picker <- scale_colour_picker
+
+#' @export
+#' @rdname scale_picker
+scale_fill_picker <- function(..., palette = "YlOrBr") {
+  fun <- sprintf("scale_fill_%s", palette)
+  do.call(fun, args = list(...))
+}
+
+#' @export
+#' @rdname scale_picker
+scale_edge_colour_picker <- function(..., palette = "YlOrBr") {
+  fun <- sprintf("scale_edge_colour_%s", palette)
+  do.call(fun, args = list(...))
+}
+
+#' @export
+#' @rdname scale_picker
+scale_edge_color_picker <- scale_edge_colour_picker
+
+#' @export
+#' @rdname scale_picker
+scale_edge_fill_picker <- function(..., palette = "YlOrBr") {
+  fun <- sprintf("scale_edge_fill_%s", palette)
+  do.call(fun, args = list(...))
+}
+
 #' Color Scale Constructors
 #'
 #' Builds a discrete or continuous scale for \pkg{ggplot2} according to the
@@ -9,6 +60,8 @@ NULL
 #' @param aesthetics The names of the aesthetics that this scale works with.
 #' @param scale_name A [`character`] string giving the name of the palette to be
 #'  used (see [colour()]).
+#' @param guide A [`function`] used to create a guide or its name.
+#'  See [ggplot2::guides()] for more information.
 #' @param reverse A [`logical`] scalar: should the resulting vector of colors
 #'  should be reversed?
 #' @param use_names A [`logical`] scalar: should the names of the colors be
@@ -32,8 +85,9 @@ NULL
 #' @noRd
 NULL
 
-scale_discrete <- function(aesthetics, scale_name, reverse = FALSE,
-                           use_names = FALSE, lang = "en", ...) {
+scale_discrete <- function(aesthetics, scale_name, guide = "legend",
+                           reverse = FALSE, use_names = FALSE,
+                           lang = "en", ...) {
   # Check if ggplot2 is installed
   check_package("ggplot2")
 
@@ -42,20 +96,21 @@ scale_discrete <- function(aesthetics, scale_name, reverse = FALSE,
                     lang = lang)
 
   # Build scale
-  scale_arguments <- list(...)
-  if (!("na.value" %in% names(scale_arguments))) {
-    scale_arguments[["na.value"]] <- attr(palette, "missing")
-  }
+  scale_args <- list(...)
+  scale_args$guide <- guide
+  scale_args$na.value <- scale_args$na.value %||% attr(palette, "missing")
+
   do.call(
-    ggplot2::discrete_scale,
-    c(aesthetics, scale_name, palette, scale_arguments)
+    ggplot2::discrete_scale, c(aesthetics, scale_name, palette, scale_args)
   )
 }
 
-scale_continuous <- function(aesthetics, scale_name, reverse = FALSE,
-                             lang = "en", range = c(0, 1), midpoint = 0, ...) {
+scale_continuous <- function(aesthetics, scale_name, guide = "colourbar",
+                             reverse = FALSE, range = c(0, 1), midpoint = 0,
+                             lang = "en", ...) {
   # Validation
   check_package("ggplot2") # Check if ggplot2 is installed
+  if (guide == "edge_colourbar") check_package("ggraph")
 
   # Get colour scheme
   palette <- colour(scale_name, reverse = reverse, names = FALSE, lang = lang)
@@ -63,21 +118,17 @@ scale_continuous <- function(aesthetics, scale_name, reverse = FALSE,
   type <- attr(palette, "type")
 
   # Build scale
-  scale_arguments <- list(...)
-  if (!("na.value" %in% names(scale_arguments))) {
-    scale_arguments[["na.value"]] <- attr(palette, "missing")
-  }
-  if (!("guide" %in% names(scale_arguments))) {
-    scale_arguments[["guide"]] <- "colourbar"
-  }
+  scale_args <- list(...)
+  scale_args$guide <- guide
+  scale_args$na.value <- scale_args$na.value %||% attr(palette, "missing")
+
   if (type == "diverging") {
-    scale_arguments[["rescaler"]] <- mid_rescaler(mid = midpoint)
+    scale_args$rescaler <- mid_rescaler(mid = midpoint)
   }
 
   palette <- scales::gradient_n_pal(palette(max, range = range))
   do.call(
-    ggplot2::continuous_scale,
-    c(aesthetics, scale_name, palette, scale_arguments)
+    ggplot2::continuous_scale, c(aesthetics, scale_name, palette, scale_args)
   )
 }
 

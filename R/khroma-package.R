@@ -2,7 +2,7 @@
 #'  \tabular{ll}{
 #'   **Package:** \tab khroma \cr
 #'   **Type:** \tab Package \cr
-#'   **Version:** \tab 1.7.0 \cr
+#'   **Version:** \tab 1.8.0 \cr
 #'   **License:** \tab GPL-3 \cr
 #'   **Zenodo:** \tab \doi{10.5281/zenodo.1472077} \cr
 #'  }
@@ -38,6 +38,10 @@
 #' @importFrom grDevices col2rgb colorRampPalette
 #' @importFrom grid gpar grid.newpage grid.rect grid.text unit
 NULL
+
+`%||%` <- function(x, y) {
+  if (!is.null(x)) x else y
+}
 
 check_package <- function(x) {
   if (!requireNamespace(x, quietly = TRUE)) {

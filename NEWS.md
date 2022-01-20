@@ -1,16 +1,20 @@
-# khroma 1.7.0
-
+# khroma 1.8.0
 ## New functions
-* Add Paul Tol's high and medium contrast colour schemes: 
-  `scale_*_mediumcontrast` and `scale_*_highcontrast` (#9).
+* Add `plot_tiles()` to produce a diagnostic map for a given colour scheme.
+* Add `scale_*_picker()` and `scale_edge_*_picker()` to build scales for **ggplot2** and **ggraph**.
+* Add **ggraph** scale functions `scale_edge_colour_*()` and `scale_edge_fill_*()` (#10).
+
+## Bugfixes & changes
+* Fix test broken by **testthat** 3.1.2 (#11, thanks to @hadley).
+
+# khroma 1.7.0
+## New functions
+* Add Paul Tol's high and medium contrast colour schemes: `scale_*_mediumcontrast` and `scale_*_highcontrast` (#9).
 
 ## Bugfixes & changes
 * Deprecate `scale_*_contrast`.
 
 # khroma 1.6.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4947109.svg)](https://doi.org/10.5281/zenodo.4947109)
-
 ## New functions
 * Add `info()` to get a table of all available palettes.
 
@@ -18,9 +22,6 @@
 * Move **ggplot2**, **scales** and **spacesXYZ** from Imports to Suggests (#8).
 
 # khroma 1.5.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4723613.svg)](https://doi.org/10.5281/zenodo.4723613)
-
 ## New functions
 * Add Fabio Crameri's *Scientific colour* schemes (35 new colour schemes).
 * Add **ggplot2** scale functions:
@@ -30,17 +31,11 @@
   * Cyclic colour schemes: `scale_*_brocO`, `scale_*_corkO`, `scale_*_vikO`, `scale_*_romaO`, `scale_*_bamO`.
 
 # khroma 1.4.1
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4612091.svg)](https://doi.org/10.5281/zenodo.4612091)
-
 ## Bugfixes & changes
 * `scale_*_sunset()`, `scale_*_BuRd()` and `scale_*_PRGn()` gained a new argument to be used with discrete data (#7).
 * Fix conflict with the `name` argument of `ggplot2::discrete_scale()` and `ggplot2::scale_continuous()`.
 
 # khroma 1.4.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4067906.svg)](https://doi.org/10.5281/zenodo.4067906)
-
 ## New functions
 * Add a `compare()` function to compute CIELAB distance metric.
 * Add a `plot()` function.
@@ -59,9 +54,6 @@
 * Move **ggplot2** and **scales** from Suggests to Imports.
 
 # khroma 1.3.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3519838.svg)](https://doi.org/10.5281/zenodo.3519838)
-
 ## Bugfixes & changes
 * Fix qualitative colour picking.
 * Fix typos in colour names (#2).
@@ -72,13 +64,10 @@
 * Move **ggplot2** and **scales** from Imports to Suggests.
 
 # khroma 1.2.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3371615.svg)](https://doi.org/10.5281/zenodo.3371615)
-
 ## New functions
 * Add the `convert()` function to simulate colour-blind vision.
-* Add the `plot_scheme()` function shows colours in a plot.
-* Add the `plot_map()` function produces a diagnostic map for a given colour scheme.
+* Add the `plot_scheme()` function to shows colours in a plot.
+* Add the `plot_map()` function to produces a diagnostic map for a given colour scheme.
 
 ## Bugfixes & changes
 * Fix the argument (number of levels) of the palette function returned by `colour()`.
@@ -87,9 +76,6 @@
 * Add a vignette for Paul Tol's colour schemes.
 
 # khroma 1.1.3
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3239344.svg)](https://doi.org/10.5281/zenodo.3239344)
-
 ## New functions
 * Add three **ggplot2** scale functions: `scale_*_pale()`, `scale_*_dark()` and `scale_*_discreterainbow()`.
 
@@ -101,9 +87,6 @@
 * The documentation is expanded with several remarks on the use of Paul Tol's colour schemes.
 
 # khroma 1.1.2
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3237015.svg)](https://doi.org/10.5281/zenodo.3237015)
-
 ## New functions
 * Add three **ggplot2** scale functions: `scale_*_contrast()`, `scale_*_iridescent()` and `scale_*_land()`.
 
@@ -113,9 +96,6 @@
 * Remove `arrange()`.
 
 # khroma 1.1.1
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2635680.svg)](https://doi.org/10.5281/zenodo.2635680)
-
 ## Bugfixes & changes
 * Midpoint can be specified in diverging colour scales.
 * Colour schemes can be reversed (a bug made the `reverse` argument inoperative).
@@ -124,9 +104,6 @@
 * Reduce required R version to 3.1.
 
 # khroma 1.1.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2577258.svg)](https://doi.org/10.5281/zenodo.2577258)
-
 ## New functions
 * Add specific **ggplot2** scale functions for Paul Tol's colour schemes: `scale_*_bright()`, `scale_*_vibrant()`, `scale_*_muted()`, `scale_*_light()`, `scale_*_rainbow()` (qualitative), `scale_*_sunset()`, `scale_*_BuRd()`, `scale_*_PRGn()` (diverging), `scale_*_YlOrBr()`, `scale_*_smoothrainbow()` (sequential).
 
@@ -135,7 +112,4 @@
 * Add the *FAO Soil Reference Groups* colour scheme.
 
 # khroma 1.0.0
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1472078.svg)](https://doi.org/10.5281/zenodo.1472078)
-
 * First release (initial version on CRAN).

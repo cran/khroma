@@ -5,9 +5,9 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/tesselle/khroma/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/khroma/actions)
-[![codecov](https://codecov.io/gh/tesselle/khroma/branch/master/graph/badge.svg)](https://codecov.io/gh/tesselle/khroma)
+[![R-CMD-check](https://github.com/tesselle/khroma/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/khroma/actions)
+[![codecov](https://codecov.io/gh/tesselle/khroma/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tesselle/khroma)
+[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/khroma/badge/main)](https://www.codefactor.io/repository/github/tesselle/khroma/overview/main)
 
 [![r-universe](https://tesselle.r-universe.dev/badges/khroma)](https://tesselle.r-universe.dev)
 [![CRAN
@@ -30,8 +30,8 @@ Color blindness affects a large number of individuals. When
 communicating scientific results colour palettes must therefore be
 carefully chosen to be accessible to all readers.
 
-This R package provides an implementation of Okabe and Ito[1], Paul
-Tol[2] and Fabio Crameri[3] colour schemes. These schemes are ready for
+This R package provides an implementation of Okabe and Ito (2008), Tol
+(2021) and Crameri (2018) colour schemes. These schemes are ready for
 each type of data (qualitative, diverging or sequential), with colours
 that are distinct for all people, including colour-blind readers. This
 package also provides tools to simulate colour-blindness and to test how
@@ -40,12 +40,25 @@ colour-blindness in production-ready R figures you may also be
 interested in the
 [**colorblindr**](https://github.com/clauswilke/colorblindr) package.
 
+Tol (2021) and Crameri (2018) offer carefully chosen schemes, ready for
+each type of data, with colours that are:
+
+-   Distinct for all people, including colour-blind readers,
+-   Distinct from black and white,
+-   Distinct on screen and paper,
+-   Matching well together,
+-   Citable and reproducible.
+
+See `vignette("tol")` and `vignette("crameri")` for a more complete
+overview.
+
 For specific uses, several scientific thematic schemes (geologic
 timescale, land cover, FAO soils, etc.) are implemented, but these
 colour schemes may not be colour-blind safe.
 
 All these colour schemes are implemented for use with base R or
-[**ggplot2**](https://github.com/tidyverse/ggplot2).
+[**ggplot2**](https://github.com/tidyverse/ggplot2) and
+[**ggraph**](https://github.com/thomasp85/ggraph).
 
 ## Installation
 
@@ -81,61 +94,61 @@ library(khroma)
 ``` r
 ## Get a table of available palettes
 info()
-#>             palette        type max missing
-#> 1              broc   diverging 256    <NA>
-#> 2              cork   diverging 256    <NA>
-#> 3               vik   diverging 256    <NA>
-#> 4            lisbon   diverging 256    <NA>
-#> 5            tofino   diverging 256    <NA>
-#> 6            berlin   diverging 256    <NA>
-#> 7              roma   diverging 256    <NA>
-#> 8               bam   diverging 256    <NA>
-#> 9            vanimo   diverging 256    <NA>
-#> 10           oleron   diverging 256    <NA>
-#> 11           bukavu   diverging 256    <NA>
-#> 12              fes   diverging 256    <NA>
-#> 13            devon  sequential 256    <NA>
-#> 14          lajolla  sequential 256    <NA>
-#> 15           bamako  sequential 256    <NA>
-#> 16            davos  sequential 256    <NA>
-#> 17           bilbao  sequential 256    <NA>
-#> 18             nuuk  sequential 256    <NA>
-#> 19             oslo  sequential 256    <NA>
-#> 20            grayC  sequential 256    <NA>
-#> 21           hawaii  sequential 256    <NA>
-#> 22            lapaz  sequential 256    <NA>
-#> 23            tokyo  sequential 256    <NA>
-#> 24             buda  sequential 256    <NA>
-#> 25            acton  sequential 256    <NA>
-#> 26            turku  sequential 256    <NA>
-#> 27            imola  sequential 256    <NA>
-#> 28           batlow  sequential 256    <NA>
-#> 29          batlowW  sequential 256    <NA>
-#> 30          batlowK  sequential 256    <NA>
-#> 31            brocO  sequential 256    <NA>
-#> 32            corkO  sequential 256    <NA>
-#> 33             vikO  sequential 256    <NA>
-#> 34            romaO  sequential 256    <NA>
-#> 35             bamO  sequential 256    <NA>
-#> 36           bright qualitative   7    <NA>
-#> 37    high contrast qualitative   3    <NA>
-#> 38          vibrant qualitative   7    <NA>
-#> 39            muted qualitative   9 #DDDDDD
-#> 40  medium contrast qualitative   6    <NA>
-#> 41             pale qualitative   6    <NA>
-#> 42             dark qualitative   6    <NA>
-#> 43            light qualitative   9    <NA>
-#> 44           sunset   diverging  11 #FFFFFF
-#> 45             BuRd   diverging   9 #FFEE99
-#> 46             PRGn   diverging   9 #FFEE99
-#> 47           YlOrBr  sequential   9 #888888
-#> 48       iridescent  sequential  23 #999999
-#> 49 discrete rainbow  sequential  23 #777777
-#> 50   smooth rainbow  sequential  34 #666666
-#> 51        okabe ito qualitative   8    <NA>
-#> 52     stratigraphy qualitative 175    <NA>
-#> 53             soil qualitative  24    <NA>
-#> 54             land qualitative  14    <NA>
+#>            palette        type max missing
+#> 1             broc   diverging 256    <NA>
+#> 2             cork   diverging 256    <NA>
+#> 3              vik   diverging 256    <NA>
+#> 4           lisbon   diverging 256    <NA>
+#> 5           tofino   diverging 256    <NA>
+#> 6           berlin   diverging 256    <NA>
+#> 7             roma   diverging 256    <NA>
+#> 8              bam   diverging 256    <NA>
+#> 9           vanimo   diverging 256    <NA>
+#> 10          oleron   diverging 256    <NA>
+#> 11          bukavu   diverging 256    <NA>
+#> 12             fes   diverging 256    <NA>
+#> 13           devon  sequential 256    <NA>
+#> 14         lajolla  sequential 256    <NA>
+#> 15          bamako  sequential 256    <NA>
+#> 16           davos  sequential 256    <NA>
+#> 17          bilbao  sequential 256    <NA>
+#> 18            nuuk  sequential 256    <NA>
+#> 19            oslo  sequential 256    <NA>
+#> 20           grayC  sequential 256    <NA>
+#> 21          hawaii  sequential 256    <NA>
+#> 22           lapaz  sequential 256    <NA>
+#> 23           tokyo  sequential 256    <NA>
+#> 24            buda  sequential 256    <NA>
+#> 25           acton  sequential 256    <NA>
+#> 26           turku  sequential 256    <NA>
+#> 27           imola  sequential 256    <NA>
+#> 28          batlow  sequential 256    <NA>
+#> 29         batlowW  sequential 256    <NA>
+#> 30         batlowK  sequential 256    <NA>
+#> 31           brocO  sequential 256    <NA>
+#> 32           corkO  sequential 256    <NA>
+#> 33            vikO  sequential 256    <NA>
+#> 34           romaO  sequential 256    <NA>
+#> 35            bamO  sequential 256    <NA>
+#> 36          bright qualitative   7    <NA>
+#> 37    highcontrast qualitative   3    <NA>
+#> 38         vibrant qualitative   7    <NA>
+#> 39           muted qualitative   9 #DDDDDD
+#> 40  mediumcontrast qualitative   6    <NA>
+#> 41            pale qualitative   6    <NA>
+#> 42            dark qualitative   6    <NA>
+#> 43           light qualitative   9    <NA>
+#> 44          sunset   diverging  11 #FFFFFF
+#> 45            BuRd   diverging   9 #FFEE99
+#> 46            PRGn   diverging   9 #FFEE99
+#> 47          YlOrBr  sequential   9 #888888
+#> 48      iridescent  sequential  23 #999999
+#> 49 discreterainbow  sequential  23 #777777
+#> 50   smoothrainbow  sequential  34 #666666
+#> 51        okabeito qualitative   8    <NA>
+#> 52    stratigraphy qualitative 175    <NA>
+#> 53            soil qualitative  24    <NA>
+#> 54            land qualitative  14    <NA>
 ```
 
 </details>
@@ -191,7 +204,16 @@ set.seed(12345)
 plot_map(okabe(8))
 ```
 
-<img src="man/figures/README-usage-colourblind1-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-map-1.png" style="display: block; margin: auto;" />
+
+``` r
+## BuRd sequential colour scheme
+BuRd <- colour("BuRd")
+
+plot_tiles(BuRd(128), n = 256)
+```
+
+<img src="man/figures/README-usage-tiles-1.png" style="display: block; margin: auto;" />
 
 #### Compute CIELAB distance metric
 
@@ -214,7 +236,7 @@ round(DeltaE, 2)
 plot_scheme_colourblind(okabe(8))
 ```
 
-<img src="man/figures/README-usage-colourblind3-1.png" style="display: block; margin: auto;" />
+<img src="man/figures/README-usage-colourblind2-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ## ggplot2 default colour scheme
@@ -223,34 +245,7 @@ x <- scales::hue_pal()(8)
 plot_scheme_colourblind(x)
 ```
 
-<img src="man/figures/README-usage-colourblind3-2.png" style="display: block; margin: auto;" />
-
-## Colour Schemes
-
-### Colour Schemes
-
-Paul Tol and Fabio Crameri offer carefully chosen schemes, ready for
-each type of data, with colours that are:
-
--   Distinct for all people, including colour-blind readers,
--   Distinct from black and white,
--   Distinct on screen and paper,
--   Matching well together,
--   Citable & reproducible.
-
-See `vignette("tol")` and `vignette("crameri")` for a more complete
-overview.
-
-### Scientific colour schemes
-
-The following scientific colour schemes are available:
-
--   International Chronostratigraphic Chart;
--   AVHRR Global Land Cover Classification;
--   FAO Soil Reference Groups.
-
-More will be added in future releases ([suggestions are
-welcome](https://github.com/tesselle/khroma/issues)).
+<img src="man/figures/README-usage-colourblind2-2.png" style="display: block; margin: auto;" />
 
 ## Contributing
 
@@ -260,14 +255,29 @@ to this project, you agree to abide by its terms.
 
 ## References
 
-[1] Okabe, M. & Ito, K. (2008). *Color Universal Design (CUD): How to
-Make Figures and Presentations That Are Friendly to Colorblind People*.
-URL: <https://jfly.uni-koeln.de/color/>.
+<div id="refs" class="references csl-bib-body hanging-indent">
 
-[2] Tol, P. (2021). *Colour Schemes*. SRON. Technical Note
-No. SRON/EPS/TN/09-002. URL:
-<https://personal.sron.nl/~pault/data/colourschemes.pdf>.
+<div id="ref-crameri2018" class="csl-entry">
 
-[3] Crameri, F. (2018). Geodynamic diagnostics, scientific visualisation
-and StagLab 3.0. *Geosci. Model Dev.*, 11, 2541-2562.
-<https://doi.org/10.5194/gmd-11-2541-2018>
+Crameri, Fabio. 2018. “Geodynamic Diagnostics, Scientific Visualisation
+and StagLab 3.0.” *Geoscientific Model Development* 11 (6): 2541–62.
+<https://doi.org/10.5194/gmd-11-2541-2018>.
+
+</div>
+
+<div id="ref-okabe2008" class="csl-entry">
+
+Okabe, Masataka, and Key Ito. 2008. “Color Universal Design (CUD): How
+to Make Figures and Presentations That Are Friendly to Colorblind
+People.” *J\*FLY*. <https://jfly.uni-koeln.de/color/>.
+
+</div>
+
+<div id="ref-tol2021" class="csl-entry">
+
+Tol, Paul. 2021. “Colour Schemes.” Technical note SRON/EPS/TN/09-002
+3.2. SRON. <https://personal.sron.nl/~pault/data/colourschemes.pdf>.
+
+</div>
+
+</div>
