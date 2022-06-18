@@ -2,7 +2,7 @@
 #'  \tabular{ll}{
 #'   **Package:** \tab khroma \cr
 #'   **Type:** \tab Package \cr
-#'   **Version:** \tab 1.8.0 \cr
+#'   **Version:** \tab 1.9.0 \cr
 #'   **License:** \tab GPL-3 \cr
 #'   **Zenodo:** \tab \doi{10.5281/zenodo.1472077} \cr
 #'  }
@@ -35,7 +35,8 @@
 # scale_fill_manual
 # @importFrom scales alpha gradient_n_pal rescale_mid
 # @importFrom spacesXYZ DeltaE
-#' @importFrom grDevices col2rgb colorRampPalette
+#' @importFrom graphics hist image legend
+#' @importFrom grDevices col2rgb colorRamp colorRampPalette rgb
 #' @importFrom grid gpar grid.newpage grid.rect grid.text unit
 NULL
 

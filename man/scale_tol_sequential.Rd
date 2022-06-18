@@ -2,98 +2,7 @@
 % Please edit documentation in R/scale_colour_tol.R
 \name{scale_tol_sequential}
 \alias{scale_tol_sequential}
-\alias{scale_colour_YlOrBr}
-\alias{scale_color_YlOrBr}
-\alias{scale_fill_YlOrBr}
-\alias{scale_colour_iridescent}
-\alias{scale_color_iridescent}
-\alias{scale_fill_iridescent}
-\alias{scale_colour_discreterainbow}
-\alias{scale_color_discreterainbow}
-\alias{scale_fill_discreterainbow}
-\alias{scale_colour_smoothrainbow}
-\alias{scale_color_smoothrainbow}
-\alias{scale_fill_smoothrainbow}
 \title{Paul Tol's Sequential Colour Schemes for \pkg{ggplot2} and \pkg{ggraph}}
-\usage{
-scale_colour_YlOrBr(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_color_YlOrBr(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_fill_YlOrBr(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "fill"
-)
-
-scale_colour_iridescent(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_color_iridescent(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_fill_iridescent(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "fill"
-)
-
-scale_colour_discreterainbow(..., reverse = FALSE, aesthetics = "colour")
-
-scale_color_discreterainbow(..., reverse = FALSE, aesthetics = "colour")
-
-scale_fill_discreterainbow(..., reverse = FALSE, aesthetics = "fill")
-
-scale_colour_smoothrainbow(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_color_smoothrainbow(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "colour"
-)
-
-scale_fill_smoothrainbow(
-  ...,
-  reverse = FALSE,
-  range = c(0, 1),
-  discrete = FALSE,
-  aesthetics = "fill"
-)
-}
 \arguments{
 \item{...}{Arguments passed to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.}
 
@@ -103,12 +12,12 @@ vector of colors be reversed?}
 \item{range}{A length-two \code{\link{numeric}} vector specifying the
 fraction of the scheme's colour domain to keep.}
 
+\item{aesthetics}{A \code{\link{character}} string or vector of character
+strings listing the name(s) of the aesthetic(s) that this scale works with.}
+
 \item{discrete}{A \code{\link{logical}} scalar: should the colour scheme be
 used as a discrete scale? If \code{TRUE}, it is a departure from Paul Tol's
 recommendations and likely a very poor use of colour.}
-
-\item{aesthetics}{A \code{\link{character}} string or vector of character
-strings listing the name(s) of the aesthetic(s) that this scale works with.}
 }
 \value{
 A \link[ggplot2:continuous_scale]{continuous} scale.
@@ -117,13 +26,7 @@ A \link[ggplot2:continuous_scale]{continuous} scale.
 Provides sequential colour scales from Paul Tol's \emph{Colour Schemes}.
 }
 \details{
-If more colors than defined are needed from a given scheme, the colour
-coordinates are linearly interpolated to provide a continuous version of the
-scheme, with the exception of the \verb{discrete rainbow} scheme (see below).
-
-Note that the default colour for \code{NA} can be overridden by passing
-a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.
-
+#'
 \tabular{lll}{
 \strong{Palette} \tab \strong{Max. colors} \tab \strong{NA value} \cr
 \code{YlOrBr} \tab 9 \tab #888888 \cr
@@ -132,6 +35,16 @@ a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.
 \code{smoothrainbow} \tab 34 \tab #666666 \cr
 }
 }
+\section{Interpolation}{
+
+If more colors than defined are needed from a given scheme, the colour
+coordinates are linearly interpolated to provide a continuous version of the
+scheme, with the exception of the \verb{discrete rainbow} scheme (see below).
+
+Note that the default colour for \code{NA} can be overridden by passing
+a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.
+}
+
 \section{Rainbow colour scheme}{
 
 As a general rule, ordered data should not be represented using a rainbow
@@ -181,20 +94,12 @@ Other colour-blind safe colour schemes:
 \code{\link{scale_crameri_diverging}},
 \code{\link{scale_crameri_mutlisequential}},
 \code{\link{scale_crameri_sequential}},
-\code{\link{scale_edge_colour_okabeito}()},
 \code{\link{scale_okabeito_discrete}},
-\code{\link{scale_tol_diverging}}
-
-Other sequential colour schemes: 
-\code{\link{scale_crameri_sequential}}
-
-Other Paul Tol's colour schemes: 
-\code{\link{scale_edge_colour_okabeito}()},
+\code{\link{scale_tol_discrete}},
 \code{\link{scale_tol_diverging}}
 }
 \author{
 N. Frerebeau
 }
-\concept{Paul Tol's colour schemes}
 \concept{colour-blind safe colour schemes}
-\concept{sequential colour schemes}
+\keyword{internal}

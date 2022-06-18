@@ -1,3 +1,23 @@
+# Colour ramp
+
+    Code
+      ramp(h, palette = "BuRd")(10)
+    Output
+       [1] "#2166AC" "#3985BC" "#68A9CF" "#9AC8E0" "#C6DFEC" "#E7EEF1" "#F7EAE2"
+       [8] "#F9D2BD" "#F2AC90" "#E37E65" "#CC4C43" "#B2182B"
+      attr(,"breaks")
+       [1]  90 100 110 120 130 140 150 160 170 180 190 200
+
+---
+
+    Code
+      ramp(h, palette = "BuRd", midpoint = 160)(10)
+    Output
+       [1] "#2166AC" "#347FB8" "#5199C6" "#7BB5D6" "#A1CBE2" "#C4DEEB" "#DFECF1"
+       [8] "#EFECEA" "#F9E5DA" "#F9D0BA" "#F4B297" "#EB9072"
+      attr(,"breaks")
+       [1]  90 100 110 120 130 140 150 160 170 180 190 200
+
 # Palette informations
 
     Code
