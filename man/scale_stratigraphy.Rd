@@ -70,7 +70,7 @@ ggplot2::ggplot(strati) +
   scale_fill_stratigraphy(name = "Stratigraphy", limits = force)
 }
 \references{
-\href{https://www.ccgm.org}{Commission for the Geological Map of the World}.
+\href{https://ccgm.org/}{Commission for the Geological Map of the World}.
 }
 \seealso{
 Other themed colour schemes: 
@@ -80,6 +80,7 @@ Other themed colour schemes:
 Other qualitative colour schemes: 
 \code{\link{scale_colour_land}()},
 \code{\link{scale_colour_soil}()},
+\code{\link{scale_logical_discrete}},
 \code{\link{scale_okabeito_discrete}},
 \code{\link{scale_tol_bright}},
 \code{\link{scale_tol_dark}},

@@ -64,6 +64,7 @@
 #'  The following (qualitative) colour scheme is available:
 #'  \describe{
 #'   \item{`okabeito`}{Up to 8 colours.}
+#'   \item{`okabeito black`}{Up to 8 colours, with black as the last.}
 #'  }
 #' @section Scientific Colour Schemes:
 #'  The following (qualitative) color schemes are available:
@@ -106,7 +107,7 @@
 #'  SRON/EPS/TN/09-002, issue 3.2.
 #'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
 #'
-#'  \href{https://www.ccgm.org}{Commission for the Geological Map of the World}
+#'  \href{https://ccgm.org/}{Commission for the Geological Map of the World}
 #' @example inst/examples/ex-palettes.R
 #' @author N. Frerebeau
 #' @family colour palettes

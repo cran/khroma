@@ -15,7 +15,7 @@ Colour schemes ready for each type of data (qualitative, diverging or sequential
 \tabular{ll}{
 \strong{Package:} \tab khroma \cr
 \strong{Type:} \tab Package \cr
-\strong{Version:} \tab 1.9.0 \cr
+\strong{Version:} \tab 1.10.0 \cr
 \strong{License:} \tab GPL-3 \cr
 \strong{Zenodo:} \tab \doi{10.5281/zenodo.1472077} \cr
 }
@@ -34,7 +34,8 @@ Useful links:
 \tabular{ll}{
 Vincent Arel-Bundock \tab \emph{Université de Montréal, Canada} \cr
 Nicolas Frerebeau \tab \emph{Université Bordeaux Montaigne, France} \cr
-Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
+Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France} \cr
+Ulrik Stervbo \tab \emph{Ruhr-Universität Bochum}
 }
 
 \strong{Package maintainer}
@@ -42,7 +43,7 @@ Brice Lebrun \tab \emph{Université Bordeaux Montaigne, France}
 Nicolas Frerebeau\cr
 \email{nicolas.frerebeau@u-bordeaux-montaigne.fr}
 
-IRAMAT-CRP2A (UMR 5060)\cr
+Archéosciences Bordeaux (UMR 6034)\cr
 Maison de l'Archéologie\cr
 Université Bordeaux Montaigne\cr
 F-33607 Pessac cedex\cr
