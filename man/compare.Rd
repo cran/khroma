@@ -2,7 +2,7 @@
 % Please edit documentation in R/compare.R
 \name{compare}
 \alias{compare}
-\title{Colour Difference}
+\title{Color Difference}
 \usage{
 compare(x, metric = 2000, diag = FALSE, upper = FALSE)
 }
@@ -51,7 +51,11 @@ compare(ach(5))
 \seealso{
 Other diagnostic tools: 
 \code{\link{convert}()},
-\code{\link{plot}()}
+\code{\link{plot.color_scheme}()},
+\code{\link{plot_map}()},
+\code{\link{plot_scheme_colourblind}()},
+\code{\link{plot_scheme}()},
+\code{\link{plot_tiles}()}
 }
 \author{
 N. Frerebeau

@@ -2,14 +2,14 @@
 % Please edit documentation in R/anomalize.R
 \name{convert}
 \alias{convert}
-\title{Simulate Colour-Blindness}
+\title{Simulate Color-Blindness}
 \usage{
 convert(x, mode)
 }
 \arguments{
 \item{x}{A palette \code{\link{function}} that when called with a single
 integer argument (the number of levels) returns a vector of colors
-(see \code{\link[=colour]{colour()}}).}
+(see \code{\link[=color]{color()}}).}
 
 \item{mode}{A \code{\link{character}} string giving the colorblind vision
 to be used. It must be one of "\code{deuteranopia}", "\code{protanopia}",
@@ -17,12 +17,12 @@ to be used. It must be one of "\code{deuteranopia}", "\code{protanopia}",
 }
 \value{
 A palette \code{\link{function}} that returns a vector of anomalized
-colours. All the attributes of the initial palette function are inherited,
+colors. All the attributes of the initial palette function are inherited,
 with a supplementary attribute "\code{mode}" giving the corresponding
-colour-blind vision.
+color-blind vision.
 }
 \description{
-Simulate Colour-Blindness
+Simulate Color-Blindness
 }
 \examples{
 # Trichromat
@@ -44,6 +44,10 @@ plot_scheme(tri(7))
 # Achromatopsia
 ach <- convert(pal, mode = "achromatopsia")
 plot_scheme(ach(7))
+
+## Plot simulated color blindness
+plot_scheme_colorblind(pal(7))
+
 }
 \references{
 Brettel, H., Viénot, F. and Mollon, J. D. (1997). Computerized Simulation of
@@ -62,7 +66,11 @@ Colourmaps for Checking the Legibility of Displays by Dichromats.
 \seealso{
 Other diagnostic tools: 
 \code{\link{compare}()},
-\code{\link{plot}()}
+\code{\link{plot.color_scheme}()},
+\code{\link{plot_map}()},
+\code{\link{plot_scheme_colourblind}()},
+\code{\link{plot_scheme}()},
+\code{\link{plot_tiles}()}
 }
 \author{
 N. Frerebeau
