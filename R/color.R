@@ -21,9 +21,10 @@
 #'  \describe{
 #'   \item{Qualitative data}{`bright` (7), `high contrast` (3), `vibrant` (7),
 #'   `muted` (9), `medium contrast` (6), `pale` (6), `dark` (6), `light` (9).}
-#'   \item{Diverging data}{`sunset` (11), `BuRd` (9), `PRGn` (9).}
-#'   \item{Sequential data}{`YlOrBr` (9), `iridescent` (23), `discrete rainbow`
-#'   (23), `smooth rainbow` (34).}
+#'   \item{Diverging data}{`sunset` (11), `nightfall` (17), `BuRd` (9),
+#'   `PRGn` (9).}
+#'   \item{Sequential data}{`YlOrBr` (9), `iridescent` (23), `incandescent`
+#'   (11), `discrete rainbow` (23), `smooth rainbow` (34).}
 #'  }
 #' @section Qualitative Color Schemes:
 #'  According to Paul Tol's technical note, the `bright`, `highcontrast`,
@@ -160,15 +161,17 @@ colour <- function(palette, reverse = FALSE, names = TRUE, lang = "en",
     fun <- function(n, range = c(0, 1)) {
       if (missing(n)) n <- k
       # Validate
-      if (n > k)
-        stop(
-          sprintf("%s color scheme supports up to %d values.",
-                  sQuote(palette), k),
-          call. = FALSE
-        )
+      if (n > k) {
+        msg <- "%s color scheme supports up to %d values."
+        stop(sprintf(msg, sQuote(palette), k), call. = FALSE)
+      }
       # Arrange color schemes
       if (!is.null(col_scheme)) {
         m <- col_scheme[[n]]
+        if (reverse) {
+          m <- rev(m)
+          col_colors <- rev(col_colors)
+        }
         col <- col_colors[m]
       } else if (col_type == "qualitative") {
         m <- seq_len(n)

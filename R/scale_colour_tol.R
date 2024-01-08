@@ -468,6 +468,61 @@ scale_edge_fill_light <- function(..., reverse = FALSE,
   scale_discrete(aesthetics, "light", reverse = reverse, ...)
 }
 
+## Discrete Rainbow ------------------------------------------------------------
+#' Paul Tol's *discrete rainbow* Sequential Color Scheme
+#'
+#' @inheritParams scale_tol_sequential
+#' @inheritSection scale_tol_sequential Interpolation
+#' @inheritSection colour Rainbow Color Scheme
+#' @return A [discrete][ggplot2::discrete_scale] scale.
+#' @references
+#'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
+#'  SRON/EPS/TN/09-002, issue 3.1.
+#'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+#' @example inst/examples/ex-tol-discrete.R
+#' @author N. Frerebeau
+#' @family qualitative color schemes
+#' @family Paul Tol's color schemes
+#' @name scale_tol_discreterainbow
+#' @rdname scale_tol_discreterainbow
+NULL
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_colour_discreterainbow <- function(..., reverse = FALSE,
+                                         aesthetics = "colour") {
+  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_color_discreterainbow <- scale_colour_discreterainbow
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_fill_discreterainbow <- function(..., reverse = FALSE,
+                                       aesthetics = "fill") {
+  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_edge_colour_discreterainbow <- function(..., reverse = FALSE,
+                                              aesthetics = "edge_colour") {
+  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+}
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_edge_color_discreterainbow <- scale_edge_colour_discreterainbow
+
+#' @export
+#' @rdname scale_tol_discreterainbow
+scale_edge_fill_discreterainbow <- function(..., reverse = FALSE,
+                                            aesthetics = "edge_fill") {
+  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+}
+
 # Diverging ====================================================================
 #' Paul Tol's Diverging Color Schemes for \pkg{ggplot2} and \pkg{ggraph}
 #'
@@ -585,6 +640,84 @@ scale_edge_fill_sunset <- function(..., reverse = FALSE, range = c(0, 1),
     scale_discrete(aesthetics, "sunset", reverse = reverse, ...)
   } else {
     scale_continuous(aesthetics, "sunset", guide = "edge_colourbar",
+                     reverse = reverse, range = range, midpoint = midpoint, ...)
+  }
+}
+
+## Nightfall ----------------------------------------------------------------------
+#' Paul Tol's *nightfall* Diverging Color Scheme
+#'
+#' @inheritParams scale_tol_diverging
+#' @inheritSection scale_tol_diverging Interpolation
+#' @return A [continuous][ggplot2::continuous_scale] scale.
+#' @references
+#'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
+#'  SRON/EPS/TN/09-002, issue 3.1.
+#'  URL: \url{https://personal.sron.nl/~pault/data/colourschemes.pdf}
+#' @example inst/examples/ex-tol-diverging.R
+#' @author N. Frerebeau
+#' @family diverging color schemes
+#' @family Paul Tol's color schemes
+#' @name scale_tol_nightfall
+#' @rdname scale_tol_nightfall
+NULL
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_colour_nightfall <- function(..., reverse = FALSE, range = c(0, 1),
+                                   midpoint = 0, discrete = FALSE,
+                                   aesthetics = "colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "nightfall", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "nightfall", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
+}
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_color_nightfall <- scale_colour_nightfall
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_fill_nightfall <- function(..., reverse = FALSE, range = c(0, 1),
+                                 midpoint = 0, discrete = FALSE,
+                                 aesthetics = "fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "nightfall", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "nightfall", reverse = reverse, range = range,
+                     midpoint = midpoint, ...)
+  }
+}
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_edge_colour_nightfall <- function(..., reverse = FALSE, range = c(0, 1),
+                                        midpoint = 0, discrete = FALSE,
+                                        aesthetics = "edge_colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "nightfall", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "nightfall", guide = "edge_colourbar",
+                     reverse = reverse, range = range, midpoint = midpoint, ...)
+  }
+}
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_edge_color_nightfall <- scale_edge_colour_nightfall
+
+#' @export
+#' @rdname scale_tol_nightfall
+scale_edge_fill_nightfall <- function(..., reverse = FALSE, range = c(0, 1),
+                                      midpoint = 0, discrete = FALSE,
+                                      aesthetics = "edge_fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "nightfall", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "nightfall", guide = "edge_colourbar",
                      reverse = reverse, range = range, midpoint = midpoint, ...)
   }
 }
@@ -940,12 +1073,11 @@ scale_edge_fill_iridescent <- function(..., reverse = FALSE, range = c(0, 1),
   }
 }
 
-## Discrete Rainbow ------------------------------------------------------------
-#' Paul Tol's *discrete rainbow* Sequential Color Scheme
+## Incandescent ------------------------------------------------------------------
+#' Paul Tol's *incandescent* Sequential Color Scheme
 #'
 #' @inheritParams scale_tol_sequential
 #' @inheritSection scale_tol_sequential Interpolation
-#' @inheritSection colour Rainbow Color Scheme
 #' @return A [continuous][ggplot2::continuous_scale] scale.
 #' @references
 #'  Tol, P. (2018). *Colour Schemes*. SRON. Technical Note No.
@@ -955,44 +1087,66 @@ scale_edge_fill_iridescent <- function(..., reverse = FALSE, range = c(0, 1),
 #' @author N. Frerebeau
 #' @family sequential color schemes
 #' @family Paul Tol's color schemes
-#' @name scale_tol_discreterainbow
-#' @rdname scale_tol_discreterainbow
+#' @name scale_tol_incandescent
+#' @rdname scale_tol_incandescent
 NULL
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_colour_discreterainbow <- function(..., reverse = FALSE,
-                                         aesthetics = "colour") {
-  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+#' @rdname scale_tol_incandescent
+scale_colour_incandescent <- function(..., reverse = FALSE, range = c(0, 1),
+                                      discrete = FALSE, aesthetics = "colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "incandescent", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "incandescent", reverse = reverse,
+                     range = range, ...)
+  }
 }
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_color_discreterainbow <- scale_colour_discreterainbow
+#' @rdname scale_tol_incandescent
+scale_color_incandescent <- scale_colour_incandescent
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_fill_discreterainbow <- function(..., reverse = FALSE,
-                                       aesthetics = "fill") {
-  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+#' @rdname scale_tol_incandescent
+scale_fill_incandescent <- function(..., reverse = FALSE, range = c(0, 1),
+                                    discrete = FALSE, aesthetics = "fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "incandescent", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "incandescent", reverse = reverse,
+                     range = range, ...)
+  }
 }
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_edge_colour_discreterainbow <- function(..., reverse = FALSE,
-                                              aesthetics = "edge_colour") {
-  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+#' @rdname scale_tol_incandescent
+scale_edge_colour_incandescent <- function(..., reverse = FALSE, range = c(0, 1),
+                                           discrete = FALSE,
+                                           aesthetics = "edge_colour") {
+  if (discrete) {
+    scale_discrete(aesthetics, "incandescent", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "incandescent", guide = "edge_colourbar",
+                     reverse = reverse, range = range, ...)
+  }
 }
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_edge_color_discreterainbow <- scale_edge_colour_discreterainbow
+#' @rdname scale_tol_incandescent
+scale_edge_color_incandescent <- scale_edge_colour_incandescent
 
 #' @export
-#' @rdname scale_tol_discreterainbow
-scale_edge_fill_discreterainbow <- function(..., reverse = FALSE,
-                                            aesthetics = "edge_fill") {
-  scale_discrete(aesthetics, "discreterainbow", reverse = reverse, ...)
+#' @rdname scale_tol_incandescent
+scale_edge_fill_incandescent <- function(..., reverse = FALSE, range = c(0, 1),
+                                         discrete = FALSE,
+                                         aesthetics = "edge_fill") {
+  if (discrete) {
+    scale_discrete(aesthetics, "incandescent", reverse = reverse, ...)
+  } else {
+    scale_continuous(aesthetics, "incandescent", guide = "edge_colourbar",
+                     reverse = reverse, range = range, ...)
+  }
 }
 
 ## Smooth Rainbow --------------------------------------------------------------

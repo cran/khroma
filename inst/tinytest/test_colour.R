@@ -1,4 +1,3 @@
-options(crayon.enabled = FALSE)
 pal <- info()
 
 # Palette colours ==============================================================
@@ -37,7 +36,8 @@ for (i in seq_len(nrow(pal_qual))) {
   expect_error(color(i_pal)(500))
   expect_equivalent(
     unclass(color(i_pal, reverse = TRUE)(i_max)),
-    rev(color(i_pal, reverse = FALSE)(i_max))
+    rev(color(i_pal, reverse = FALSE)(i_max)),
+    info = i_pal
   )
 }
 

@@ -1,5 +1,9 @@
 ## ----setup, include=FALSE-----------------------------------------------------
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  out.width = "100%"
+)
 
 ## ----packages-----------------------------------------------------------------
 library(khroma)
@@ -37,7 +41,11 @@ plot_scheme(light(9), colours = TRUE, names = TRUE, size = 0.9)
 
 ## ----tol_div_sunset, fig.height=2, fig.width=7--------------------------------
 sunset <- color("sunset")
-plot_scheme(sunset(9), colours = TRUE, size = 0.9)
+plot_scheme(sunset(11), colours = TRUE, size = 0.9)
+
+## ----tol_div_nightfall, fig.height=2, fig.width=7-----------------------------
+nightfall <- color("nightfall")
+plot_scheme(nightfall(17), colours = TRUE, size = 0.9)
 
 ## ----tol_div_BuRd, fig.height=2, fig.width=7----------------------------------
 BuRd <- color("BuRd")
@@ -54,6 +62,10 @@ plot_scheme(YlOrBr(9), colours = TRUE, size = 0.9)
 ## ----tol_seq_iridescent, fig.height=2, fig.width=7----------------------------
 iridescent <- color("iridescent")
 plot_scheme(iridescent(23), colours = TRUE, size = 0.5)
+
+## ----tol_seq_incandescent, fig.height=2, fig.width=7--------------------------
+incandescent <- color("incandescent")
+plot_scheme(incandescent(11), colours = TRUE, size = 0.5)
 
 ## ----tol_seq_rainbow, fig.height=2, fig.width=7-------------------------------
 discrete_rainbow <- color("discrete rainbow")
@@ -77,11 +89,13 @@ plot_map(light(9))
 ## ----tol_div, echo=FALSE, fig.height = 2, fig.width = 7, fig.show='hold', fig.cap='Diagnostic maps for the sunset, BuRd and PRGn (from top to bottom) diverging color schemes.'----
 set.seed(12345)
 plot_map(sunset(11))
+plot_map(nightfall(17))
 plot_map(BuRd(9))
 plot_map(PRGn(9))
 
-## ----tol_div_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='30%', fig.show='hold', fig.cap='Diagnostic maps for the sunset, BuRd and PRGn diverging color schemes.'----
+## ----tol_div_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='50%', fig.show='hold', fig.cap='Diagnostic maps for the sunset, BuRd and PRGn diverging color schemes.'----
 plot_tiles(color("sunset")(128), n = 256)
+plot_tiles(color("nightfall")(128), n = 256)
 plot_tiles(color("BuRd")(128), n = 256)
 plot_tiles(color("PRGn")(128), n = 256)
 
@@ -89,11 +103,13 @@ plot_tiles(color("PRGn")(128), n = 256)
 set.seed(12345)
 plot_map(YlOrBr(9))
 plot_map(iridescent(23))
+plot_map(incandescent(11))
 plot_map(discrete_rainbow(14))
 plot_map(smooth_rainbow(23))
 
-## ----tol_seq_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='30%', fig.show='hold', fig.cap='Diagnostic maps for the YlOrBr, iridescent and smooth rainbow sequential color schemes.'----
+## ----tol_seq_map, echo=FALSE, fig.height = 7, fig.width = 7, out.width='50%', fig.show='hold', fig.cap='Diagnostic maps for the YlOrBr, iridescent and smooth rainbow sequential color schemes.'----
 plot_tiles(color("YlOrBr")(128), n = 256)
 plot_tiles(color("iridescent")(128), n = 256)
+plot_tiles(color("incandescent")(128), n = 256)
 plot_tiles(color("smooth rainbow")(128), n = 256)
 

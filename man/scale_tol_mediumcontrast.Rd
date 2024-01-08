@@ -70,7 +70,7 @@ references).
 }
 
 \examples{
-library(ggplot2)
+data(mpg, package = "ggplot2")
 
 ggplot2::ggplot(mpg, ggplot2::aes(displ, hwy, colour = class)) +
   ggplot2::geom_point() +
@@ -79,6 +79,8 @@ ggplot2::ggplot(mpg, ggplot2::aes(displ, hwy, colour = class)) +
 ggplot2::ggplot(mpg, ggplot2::aes(displ, hwy, colour = class)) +
   ggplot2::geom_point() +
   scale_colour_vibrant()
+
+data(diamonds, package = "ggplot2")
 
 ggplot2::ggplot(diamonds, ggplot2::aes(clarity, fill = cut)) +
   ggplot2::geom_bar() +
@@ -98,6 +100,7 @@ Other qualitative color schemes:
 \code{\link{scale_okabeito_discrete}},
 \code{\link{scale_tol_bright}},
 \code{\link{scale_tol_dark}},
+\code{\link{scale_tol_discreterainbow}},
 \code{\link{scale_tol_highcontrast}},
 \code{\link{scale_tol_light}},
 \code{\link{scale_tol_muted}},
@@ -112,9 +115,11 @@ Other Paul Tol's color schemes:
 \code{\link{scale_tol_dark}},
 \code{\link{scale_tol_discreterainbow}},
 \code{\link{scale_tol_highcontrast}},
+\code{\link{scale_tol_incandescent}},
 \code{\link{scale_tol_iridescent}},
 \code{\link{scale_tol_light}},
 \code{\link{scale_tol_muted}},
+\code{\link{scale_tol_nightfall}},
 \code{\link{scale_tol_pale}},
 \code{\link{scale_tol_smoothrainbow}},
 \code{\link{scale_tol_sunset}},
