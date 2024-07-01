@@ -92,14 +92,30 @@ A \link[ggplot2:continuous_scale]{continuous} scale.
 \description{
 Fabio Crameri's \emph{berlin} Diverging Color Scheme
 }
-\section{Interpolation}{
+\section{Diverging Color Schemes}{
 
 If more colors than defined are needed from a given scheme, the color
 coordinates are linearly interpolated to provide a continuous version of the
 scheme.
 
-Note that the default color for \code{NA} can be overridden by passing
-a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.#'
+\tabular{lll}{
+\strong{Palette} \tab \strong{Max.} \cr
+\code{broc}      \tab 256      \cr
+\code{cork}      \tab 256      \cr
+\code{vik}       \tab 256      \cr
+\code{lisbon}    \tab 256      \cr
+\code{tofino}    \tab 256      \cr
+\code{berlin}    \tab 256      \cr
+\code{roma}      \tab 256      \cr
+\code{bam}       \tab 256      \cr
+\code{vanimo}    \tab 256      \cr
+\code{brocO}*    \tab 256      \cr
+\code{corkO}*    \tab 256      \cr
+\code{vikO}*     \tab 256      \cr
+\code{romaO}*    \tab 256      \cr
+\code{bamO}*     \tab 256      \cr
+}
+*: cyclic color schemes.
 }
 
 \examples{
@@ -139,19 +155,19 @@ Other diverging color schemes:
 
 Other Fabio Crameri's color schemes: 
 \code{\link{scale_crameri_acton}},
+\code{\link{scale_crameri_bam}},
 \code{\link{scale_crameri_bamO}},
 \code{\link{scale_crameri_bamako}},
-\code{\link{scale_crameri_bam}},
+\code{\link{scale_crameri_batlow}},
 \code{\link{scale_crameri_batlowK}},
 \code{\link{scale_crameri_batlowW}},
-\code{\link{scale_crameri_batlow}},
 \code{\link{scale_crameri_bilbao}},
-\code{\link{scale_crameri_brocO}},
 \code{\link{scale_crameri_broc}},
+\code{\link{scale_crameri_brocO}},
 \code{\link{scale_crameri_buda}},
 \code{\link{scale_crameri_bukavu}},
-\code{\link{scale_crameri_corkO}},
 \code{\link{scale_crameri_cork}},
+\code{\link{scale_crameri_corkO}},
 \code{\link{scale_crameri_davos}},
 \code{\link{scale_crameri_devon}},
 \code{\link{scale_crameri_fes}},
@@ -164,14 +180,14 @@ Other Fabio Crameri's color schemes:
 \code{\link{scale_crameri_nuuk}},
 \code{\link{scale_crameri_oleron}},
 \code{\link{scale_crameri_oslo}},
-\code{\link{scale_crameri_romaO}},
 \code{\link{scale_crameri_roma}},
+\code{\link{scale_crameri_romaO}},
 \code{\link{scale_crameri_tofino}},
 \code{\link{scale_crameri_tokyo}},
 \code{\link{scale_crameri_turku}},
 \code{\link{scale_crameri_vanimo}},
-\code{\link{scale_crameri_vikO}},
-\code{\link{scale_crameri_vik}}
+\code{\link{scale_crameri_vik}},
+\code{\link{scale_crameri_vikO}}
 }
 \author{
 N. Frerebeau

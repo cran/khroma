@@ -11,6 +11,10 @@
 
 \item{...}{Currently not used.}
 }
+\value{
+\code{plot()} is called for its side-effects: it results in a graphic
+being displayed (invisibly returns \code{x}).
+}
 \description{
 Quickly displays a color scheme returned by \code{\link[=color]{color()}}.
 }
@@ -37,11 +41,11 @@ plot_tiles(colour("smooth rainbow")(256), n = 256)
 }
 \seealso{
 Other diagnostic tools: 
+\code{\link{change}()},
 \code{\link{compare}()},
-\code{\link{convert}()},
 \code{\link{plot_map}()},
-\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_scheme}()},
+\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_tiles}()}
 }
 \author{

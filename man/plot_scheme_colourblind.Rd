@@ -12,6 +12,10 @@ plot_scheme_colorblind(x)
 \arguments{
 \item{x}{A \code{\link{character}} vector of colors.}
 }
+\value{
+\code{plot_scheme_colourblind()} is called for its side-effects: it results in a
+graphic being displayed (invisibly returns \code{x}).
+}
 \description{
 Shows colors in a plot with different types of simulated color blindness.
 }
@@ -21,19 +25,19 @@ pal <- colour("bright")
 plot_scheme(pal(7))
 
 # Deuteranopia
-deu <- convert(pal, mode = "deuteranopia")
+deu <- change(pal, mode = "deuteranopia")
 plot_scheme(deu(7))
 
 # Protanopia
-pro <- convert(pal, mode = "protanopia")
+pro <- change(pal, mode = "protanopia")
 plot_scheme(pro(7))
 
 # Tritanopia
-tri <- convert(pal, mode = "tritanopia")
+tri <- change(pal, mode = "tritanopia")
 plot_scheme(tri(7))
 
 # Achromatopsia
-ach <- convert(pal, mode = "achromatopsia")
+ach <- change(pal, mode = "achromatopsia")
 plot_scheme(ach(7))
 
 ## Plot simulated color blindness
@@ -42,8 +46,8 @@ plot_scheme_colorblind(pal(7))
 }
 \seealso{
 Other diagnostic tools: 
+\code{\link{change}()},
 \code{\link{compare}()},
-\code{\link{convert}()},
 \code{\link{plot.color_scheme}()},
 \code{\link{plot_map}()},
 \code{\link{plot_scheme}()},

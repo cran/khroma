@@ -1,6 +1,6 @@
 Package: khroma
 Title: Colour Schemes for Scientific Data Visualization
-Version: 1.12.0
+Version: 1.13.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944", affiliation = "Université Bordeaux Montaigne")),
@@ -33,15 +33,16 @@ Suggests: ggplot2, ggraph, knitr, markdown, rsvg, scales, spacesXYZ,
         svglite, tinysnapshot, tinytest
 VignetteBuilder: knitr
 Encoding: UTF-8
-RoxygenNote: 7.2.3
-Collate: 'anomalize.R' 'color.R' 'compare.R' 'convert.R' 'ggplot2.R'
-        'info.R' 'khroma-internal.R' 'khroma-package.R' 'plot.R'
-        'plot_map.R' 'plot_scheme.R' 'plot_scheme_colorblind.R'
-        'plot_tiles.R' 'print.R' 'ramp.R' 'scale_colour_crameri.R'
-        'scale_colour_okabeito.R' 'scale_colour_other.R'
-        'scale_colour_science.R' 'scale_colour_tol.R'
+RoxygenNote: 7.3.1
+Collate: 'change.R' 'color.R' 'compare.R' 'info.R' 'khroma-defunct.R'
+        'khroma-deprecated.R' 'khroma-internal.R' 'khroma-package.R'
+        'palettes.R' 'plot.R' 'plot_map.R' 'plot_scheme.R'
+        'plot_scheme_colorblind.R' 'plot_tiles.R' 'print.R'
+        'scale_colour_crameri.R' 'scale_colour_okabeito.R'
+        'scale_colour_picker.R' 'scale_colour_science.R'
+        'scale_colour_tol.R'
 NeedsCompilation: no
-Packaged: 2024-01-08 09:28:25 UTC; nicolas
+Packaged: 2024-07-01 09:54:55 UTC; nicolas
 Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>,
     Université Bordeaux Montaigne),
   Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>, Université
@@ -53,4 +54,4 @@ Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>,
   Université Bordeaux Montaigne [fnd],
   CNRS [fnd]
 Repository: CRAN
-Date/Publication: 2024-01-08 12:20:02 UTC
+Date/Publication: 2024-07-01 10:20:35 UTC

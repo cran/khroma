@@ -83,14 +83,37 @@ A \link[ggplot2:continuous_scale]{continuous} scale.
 \description{
 Fabio Crameri's \emph{batlowK} Sequential Color Scheme
 }
-\section{Interpolation}{
+\section{Sequential Color Schemes}{
 
 If more colors than defined are needed from a given scheme, the color
 coordinates are linearly interpolated to provide a continuous version of the
 scheme.
 
-Note that the default color for \code{NA} can be overridden by passing
-a value to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}}.
+\tabular{lll}{
+\strong{Palette} \tab \strong{Max.} \cr
+\code{batlow}    \tab 256      \cr
+\code{batlowW}   \tab 256      \cr
+\code{batlowK}   \tab 256      \cr
+\code{devon}     \tab 256      \cr
+\code{lajolla}   \tab 256      \cr
+\code{bamako}    \tab 256      \cr
+\code{davos}     \tab 256      \cr
+\code{bilbao}    \tab 256      \cr
+\code{nuuk}      \tab 256      \cr
+\code{oslo}      \tab 256      \cr
+\code{grayC}     \tab 256      \cr
+\code{hawaii}    \tab 256      \cr
+\code{lapaz}     \tab 256      \cr
+\code{tokyo}     \tab 256      \cr
+\code{buda}      \tab 256      \cr
+\code{acton}     \tab 256      \cr
+\code{turku}     \tab 256      \cr
+\code{imola}     \tab 256      \cr
+\code{oleron}*   \tab 256      \cr
+\code{bukavu}*   \tab 256      \cr
+\code{fes}*      \tab 256      \cr
+}
+*: multisequential color schemes.
 }
 
 \examples{
@@ -121,8 +144,8 @@ science communication. \emph{Nature Communications}, 11, 5444.
 Other sequential color schemes: 
 \code{\link{scale_crameri_acton}},
 \code{\link{scale_crameri_bamako}},
-\code{\link{scale_crameri_batlowW}},
 \code{\link{scale_crameri_batlow}},
+\code{\link{scale_crameri_batlowW}},
 \code{\link{scale_crameri_bilbao}},
 \code{\link{scale_crameri_buda}},
 \code{\link{scale_crameri_davos}},
@@ -143,19 +166,19 @@ Other sequential color schemes:
 
 Other Fabio Crameri's color schemes: 
 \code{\link{scale_crameri_acton}},
+\code{\link{scale_crameri_bam}},
 \code{\link{scale_crameri_bamO}},
 \code{\link{scale_crameri_bamako}},
-\code{\link{scale_crameri_bam}},
-\code{\link{scale_crameri_batlowW}},
 \code{\link{scale_crameri_batlow}},
+\code{\link{scale_crameri_batlowW}},
 \code{\link{scale_crameri_berlin}},
 \code{\link{scale_crameri_bilbao}},
-\code{\link{scale_crameri_brocO}},
 \code{\link{scale_crameri_broc}},
+\code{\link{scale_crameri_brocO}},
 \code{\link{scale_crameri_buda}},
 \code{\link{scale_crameri_bukavu}},
-\code{\link{scale_crameri_corkO}},
 \code{\link{scale_crameri_cork}},
+\code{\link{scale_crameri_corkO}},
 \code{\link{scale_crameri_davos}},
 \code{\link{scale_crameri_devon}},
 \code{\link{scale_crameri_fes}},
@@ -168,14 +191,14 @@ Other Fabio Crameri's color schemes:
 \code{\link{scale_crameri_nuuk}},
 \code{\link{scale_crameri_oleron}},
 \code{\link{scale_crameri_oslo}},
-\code{\link{scale_crameri_romaO}},
 \code{\link{scale_crameri_roma}},
+\code{\link{scale_crameri_romaO}},
 \code{\link{scale_crameri_tofino}},
 \code{\link{scale_crameri_tokyo}},
 \code{\link{scale_crameri_turku}},
 \code{\link{scale_crameri_vanimo}},
-\code{\link{scale_crameri_vikO}},
-\code{\link{scale_crameri_vik}}
+\code{\link{scale_crameri_vik}},
+\code{\link{scale_crameri_vikO}}
 }
 \author{
 N. Frerebeau

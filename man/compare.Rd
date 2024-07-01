@@ -28,33 +28,31 @@ Computes CIELAB distance metric.
 \examples{
 # Trichromat
 pal <- colour("bright")
-
-(deltaE <- compare(pal(5)))
-summary(deltaE)
+compare(pal(5))
 
 # Deuteranopia
-deu <- convert(pal, mode = "deuteranopia")
+deu <- change(pal, mode = "deuteranopia")
 compare(deu(5))
 
 # Protanopia
-pro <- convert(pal, mode = "protanopia")
+pro <- change(pal, mode = "protanopia")
 compare(pro(5))
 
 # Tritanopia
-tri <- convert(pal, mode = "tritanopia")
+tri <- change(pal, mode = "tritanopia")
 compare(tri(5))
 
 # Achromatopsia
-ach <- convert(pal, mode = "achromatopsia")
+ach <- change(pal, mode = "achromatopsia")
 compare(ach(5))
 }
 \seealso{
 Other diagnostic tools: 
-\code{\link{convert}()},
+\code{\link{change}()},
 \code{\link{plot.color_scheme}()},
 \code{\link{plot_map}()},
-\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_scheme}()},
+\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_tiles}()}
 }
 \author{

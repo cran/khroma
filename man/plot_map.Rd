@@ -9,6 +9,10 @@ plot_map(x)
 \arguments{
 \item{x}{A \code{\link{character}} vector of colors.}
 }
+\value{
+\code{plot_map()} is called for its side-effects: it results in a graphic
+being displayed (invisibly returns \code{x}).
+}
 \description{
 Produces a diagnostic map for a given color scheme.
 }
@@ -35,11 +39,11 @@ plot_tiles(colour("smooth rainbow")(256), n = 256)
 }
 \seealso{
 Other diagnostic tools: 
+\code{\link{change}()},
 \code{\link{compare}()},
-\code{\link{convert}()},
 \code{\link{plot.color_scheme}()},
-\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_scheme}()},
+\code{\link{plot_scheme_colourblind}()},
 \code{\link{plot_tiles}()}
 }
 \author{

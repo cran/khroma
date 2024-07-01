@@ -1,9 +1,23 @@
+# khroma 1.13.0
+## New functions
+* Add `palette_color_picker()`, `palette_color_continuous()` and  `palette_color_discrete()` to map values to colors.
+* Add `palette_shape()` and `palette_line()` to map values to symbols.
+* Add `palette_size_range()` to size symbols.
+* Add `change()` to simulate color-blindness (#14).
+
+## Bugfixes & changes
+* `colour()` no longer returns a named vector by default.
+* `plot*()` functions invisibly return the first argument (vector of colors).
+* Deprecate `convert()` (#14).
+* Deprecate `ramp()`.
+* Remove deprecated argument in `ggplot2::discrete_scale()` and `ggplot2::continuous_scale()` (#15).
+
 # khroma 1.12.0
 ## New functions
 * Add Paul Tol `nightfall` and `incandescent` colour schemes.
 
 ## Bugfixes & changes
-*  Fix `discreterainbow` scheme (qualitative scheme instead of sequential).
+*  Fix `discreterainbow` scheme (*qualitative* scheme instead of *sequential*).
 
 # khroma 1.11.0
 ## Bugfixes & changes
