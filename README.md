@@ -16,7 +16,7 @@ src="https://tesselle.r-universe.dev/badges/khroma"
 alt="r-universe" /></a>
 <a href="https://cran.r-project.org/package=khroma"
 class="pkgdown-release"><img
-src="http://www.r-pkg.org/badges/version/khroma"
+src="https://www.r-pkg.org/badges/version/khroma"
 alt="CRAN Version" /></a> <a
 href="https://cran.r-project.org/web/checks/check_results_khroma.html"
 class="pkgdown-release"><img
@@ -24,7 +24,7 @@ src="https://badges.cranchecks.info/worst/khroma.svg"
 alt="CRAN checks" /></a>
 <a href="https://cran.r-project.org/package=khroma"
 class="pkgdown-release"><img
-src="http://cranlogs.r-pkg.org/badges/khroma"
+src="https://cranlogs.r-pkg.org/badges/khroma"
 alt="CRAN Downloads" /></a>
 
 [![Project Status: Active – The project has reached a stable, usable
@@ -77,7 +77,7 @@ To cite khroma in publications use:
 Frerebeau N (2024). *khroma: Colour Schemes for Scientific Data
 Visualization*. Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.1472077> <https://doi.org/10.5281/zenodo.1472077>, R
-package version 1.13.0, <https://packages.tesselle.org/khroma/>.
+package version 1.14.0, <https://packages.tesselle.org/khroma/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
