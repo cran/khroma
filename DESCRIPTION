@@ -1,15 +1,15 @@
 Package: khroma
 Title: Colour Schemes for Scientific Data Visualization
-Version: 1.14.0
+Version: 1.15.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-5759-4944", affiliation = "Université Bordeaux Montaigne")),
+           comment = c(ORCID = "0000-0001-5759-4944")),
     person("Brice", "Lebrun", , "brice.lebrun@u-bordeaux-montaigne.fr", role = "ctb",
-           comment = c(ORCID = "0000-0001-7503-8685", affiliation = "Université Bordeaux Montaigne")),
+           comment = c(ORCID = "0000-0001-7503-8685")),
     person("Vincent", "Arel-Bundock", , "vincent.arel-bundock@umontreal.ca", role = "ctb",
-           comment = c(ORCID = "0000-0003-2042-7063", affiliation = "Université de Montréal")),
+           comment = c(ORCID = "0000-0003-2042-7063")),
     person("Ulrik", "Stervbo", , "ulrik.stervbo@gmail.com", role = "ctb",
-           comment = c(ORCID = "0000-0002-2831-8868", affiliation = "Ruhr-Universität Bochum")),
+           comment = c(ORCID = "0000-0002-2831-8868")),
     person("Université Bordeaux Montaigne", role = "fnd"),
     person("CNRS", role = "fnd")
   )
@@ -42,16 +42,12 @@ Collate: 'change.R' 'color.R' 'compare.R' 'info.R' 'khroma-defunct.R'
         'scale_colour_picker.R' 'scale_colour_science.R'
         'scale_colour_tol.R'
 NeedsCompilation: no
-Packaged: 2024-08-26 15:14:40 UTC; nicolas
-Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>,
-    Université Bordeaux Montaigne),
-  Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>, Université
-    Bordeaux Montaigne),
-  Vincent Arel-Bundock [ctb] (<https://orcid.org/0000-0003-2042-7063>,
-    Université de Montréal),
-  Ulrik Stervbo [ctb] (<https://orcid.org/0000-0002-2831-8868>,
-    Ruhr-Universität Bochum),
+Packaged: 2025-01-10 14:53:07 UTC; nicolas
+Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>),
+  Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>),
+  Vincent Arel-Bundock [ctb] (<https://orcid.org/0000-0003-2042-7063>),
+  Ulrik Stervbo [ctb] (<https://orcid.org/0000-0002-2831-8868>),
   Université Bordeaux Montaigne [fnd],
   CNRS [fnd]
 Repository: CRAN
-Date/Publication: 2024-08-26 16:20:02 UTC
+Date/Publication: 2025-01-10 16:10:05 UTC
