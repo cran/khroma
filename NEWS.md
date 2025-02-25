@@ -1,3 +1,10 @@
+# khroma 1.16.0
+## Enhancements
+* Translate into French.
+
+## Internals
+* Update package metadata.
+
 # khroma 1.15.0
 ## New functions
 * Add `palette_size_sequential()` and `palette_size_diverging()` to size symbols.

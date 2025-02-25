@@ -5,9 +5,6 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/tesselle/khroma/workflows/R-CMD-check/badge.svg)](https://github.com/tesselle/khroma/actions)
-[![codecov](https://codecov.io/gh/tesselle/khroma/branch/main/graph/badge.svg)](https://app.codecov.io/gh/tesselle/khroma)
-[![CodeFactor](https://www.codefactor.io/repository/github/tesselle/khroma/badge/main)](https://www.codefactor.io/repository/github/tesselle/khroma/overview/main)
 [![Dependencies](https://tinyverse.netlify.app/badge/khroma)](https://cran.r-project.org/package=khroma)
 
 <a href="https://tesselle.r-universe.dev/khroma"
@@ -77,7 +74,7 @@ To cite khroma in publications use:
 Frerebeau N (2025). *khroma: Colour Schemes for Scientific Data
 Visualization*. Université Bordeaux Montaigne, Pessac, France.
 <doi:10.5281/zenodo.1472077> <https://doi.org/10.5281/zenodo.1472077>, R
-package version 1.15.0, <https://packages.tesselle.org/khroma/>.
+package version 1.16.0, <https://packages.tesselle.org/khroma/>.
 
 This package is a part of the tesselle project
 <https://www.tesselle.org>.
@@ -91,11 +88,11 @@ You can install the released version of **khroma** from
 install.packages("khroma")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+And the development version from [Codeberg](https://codeberg.org/) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("tesselle/khroma")
+remotes::install_git("https://codeberg.org/tesselle/khroma")
 ```
 
 ## Usage

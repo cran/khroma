@@ -1,19 +1,20 @@
 Package: khroma
 Title: Colour Schemes for Scientific Data Visualization
-Version: 1.15.0
+Version: 1.16.0
 Authors@R: c(
     person("Nicolas", "Frerebeau", , "nicolas.frerebeau@u-bordeaux-montaigne.fr", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5759-4944")),
-    person("Brice", "Lebrun", , "brice.lebrun@u-bordeaux-montaigne.fr", role = "ctb",
-           comment = c(ORCID = "0000-0001-7503-8685")),
+    person("Brice", "Lebrun", role = "art",
+           comment = c(ORCID = "0000-0001-7503-8685", "Logo designer")),
     person("Vincent", "Arel-Bundock", , "vincent.arel-bundock@umontreal.ca", role = "ctb",
            comment = c(ORCID = "0000-0003-2042-7063")),
     person("Ulrik", "Stervbo", , "ulrik.stervbo@gmail.com", role = "ctb",
            comment = c(ORCID = "0000-0002-2831-8868")),
-    person("Université Bordeaux Montaigne", role = "fnd"),
-    person("CNRS", role = "fnd")
+    person("Université Bordeaux Montaigne", role = "fnd",
+           comment = c(ROR = "03pbgwk21")),
+    person("CNRS", role = "fnd",
+           comment = c(ROR = "02feahw73"))
   )
-Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Description: Color schemes ready for each type of data (qualitative,
     diverging or sequential), with colors that are distinct for all
     people, including color-blind readers. This package provides an
@@ -24,9 +25,9 @@ Description: Color schemes ready for each type of data (qualitative,
     scientific thematic schemes (geologic timescale, land cover, FAO
     soils, etc.) are also implemented.
 License: GPL (>= 3)
-URL: https://packages.tesselle.org/khroma/,
-        https://github.com/tesselle/khroma
-BugReports: https://github.com/tesselle/khroma/issues
+URL: https://codeberg.org/tesselle/khroma,
+        https://packages.tesselle.org/khroma/
+BugReports: https://codeberg.org/tesselle/khroma/issues
 Depends: R (>= 3.5.0)
 Imports: graphics, grDevices, grid, stats, utils
 Suggests: ggplot2, ggraph, knitr, markdown, rsvg, scales, spacesXYZ,
@@ -34,6 +35,9 @@ Suggests: ggplot2, ggraph, knitr, markdown, rsvg, scales, spacesXYZ,
 VignetteBuilder: knitr
 Encoding: UTF-8
 RoxygenNote: 7.3.2
+X-schema.org-isPartOf: https://www.tesselle.org
+X-schema.org-keywords: data-visualization, colour-schemes,
+        accessibility, r-package
 Collate: 'change.R' 'color.R' 'compare.R' 'info.R' 'khroma-defunct.R'
         'khroma-deprecated.R' 'khroma-internal.R' 'khroma-package.R'
         'palettes.R' 'plot.R' 'plot_map.R' 'plot_scheme.R'
@@ -42,12 +46,14 @@ Collate: 'change.R' 'color.R' 'compare.R' 'info.R' 'khroma-defunct.R'
         'scale_colour_picker.R' 'scale_colour_science.R'
         'scale_colour_tol.R'
 NeedsCompilation: no
-Packaged: 2025-01-10 14:53:07 UTC; nicolas
+Packaged: 2025-02-25 17:08:27 UTC; nicolas
 Author: Nicolas Frerebeau [aut, cre] (<https://orcid.org/0000-0001-5759-4944>),
-  Brice Lebrun [ctb] (<https://orcid.org/0000-0001-7503-8685>),
+  Brice Lebrun [art] (<https://orcid.org/0000-0001-7503-8685>, Logo
+    designer),
   Vincent Arel-Bundock [ctb] (<https://orcid.org/0000-0003-2042-7063>),
   Ulrik Stervbo [ctb] (<https://orcid.org/0000-0002-2831-8868>),
-  Université Bordeaux Montaigne [fnd],
-  CNRS [fnd]
+  Université Bordeaux Montaigne [fnd] (03pbgwk21),
+  CNRS [fnd] (02feahw73)
+Maintainer: Nicolas Frerebeau <nicolas.frerebeau@u-bordeaux-montaigne.fr>
 Repository: CRAN
-Date/Publication: 2025-01-10 16:10:05 UTC
+Date/Publication: 2025-02-25 17:40:05 UTC
